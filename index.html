@@ -77,18 +77,20 @@
   }
 
   .brand-mark {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border: 2px solid var(--gold-light);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 12px;
-    color: var(--gold-light);
-    letter-spacing: 0.5px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--cream);
+  }
+
+  .brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
   }
 
   .brand-text {
@@ -166,10 +168,12 @@
 
   /* ---------- Hero ---------- */
   .hero {
-    background: var(--navy);
-    background-image:
-      radial-gradient(circle at 85% 20%, rgba(184,134,62,0.14), transparent 45%),
-      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    background:
+      radial-gradient(circle at 85% 15%, rgba(184,134,62,0.18), transparent 45%),
+      linear-gradient(180deg, rgba(11,37,69,0.94) 0%, rgba(7,26,51,0.97) 100%),
+      url('images/edificio.jpg');
+    background-size: cover;
+    background-position: center 65%;
     padding: 74px 0 90px;
     color: #fff;
   }
@@ -405,6 +409,45 @@
     color: var(--ink-soft);
   }
 
+  .interior-photo {
+    margin-top: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--line);
+  }
+
+  .interior-photo img {
+    width: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .interior-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(11,37,69,0.85), transparent);
+    color: #fff;
+    padding: 30px 26px 16px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .visit-banner {
+    line-height: 0;
+  }
+
+  .visit-banner img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
   /* ---------- About / trust strip ---------- */
   .about {
     background: var(--sky);
@@ -578,6 +621,8 @@
     .hero h1 { font-size: 32px; }
     .id-fields { grid-template-columns: 1fr 1fr; }
     .nav-inner { padding: 14px 20px; }
+    .interior-photo img { max-height: 260px; }
+    .visit-banner img { max-height: 260px; }
   }
 
   :focus-visible {
@@ -596,7 +641,7 @@
 <header>
   <div class="nav-inner">
     <a href="#top" class="brand">
-      <div class="brand-mark">805</div>
+      <div class="brand-mark"><img src="images/oso-face.jpg" alt="805 MultiServices bear logo"></div>
       <div class="brand-text">
         805 MultiServices
         <span class="lang-es">Santa Maria, CA</span>
@@ -764,8 +809,22 @@
       </div>
 
     </div>
+
+    <div class="interior-photo">
+      <img src="images/interior.jpg" alt="Interior de la oficina de 805 MultiServices">
+      <div class="interior-caption">
+        <span class="lang-es">Nuestra oficina en Santa Maria — atención directa, sin filas de espera.</span>
+        <span class="lang-en">Our Santa Maria office — direct service, no waiting in line.</span>
+      </div>
+    </div>
   </div>
 </section>
+
+<div class="visit-banner">
+  <a href="#contacto">
+    <img src="images/visitanos-banner.jpg" alt="Oficina en Santa Maria, visítanos">
+  </a>
+</div>
 
 <section class="section about" id="nosotros">
   <div class="container about-inner">
@@ -895,4 +954,4 @@
 </script>
 
 </body>
-</html>  
+</html>

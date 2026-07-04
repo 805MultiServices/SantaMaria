@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>805 MultiServices — Santa Maria, CA</title>
+<meta name="description" content="805 MultiServices: DMV, Seguros de Auto, Live Scan, Envíos de Dinero, Paquetería y Preparación de Impuestos en Santa Maria, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0B2545;
+    --navy-deep: #071A33;
+    --blue: #1E5A8E;
+    --sky: #E8F1F8;
+    --gold: #B8863E;
+    --gold-light: #D9AE64;
+    --cream: #FBFAF7;
+    --ink: #1A222C;
+    --ink-soft: #4A5568;
+    --line: #D9E2EC;
+
+    --font-display: 'Roboto Slab', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.55;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  a { color: inherit; }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* Language toggle text visibility */
+  [data-lang="es"] .lang-en { display: none !important; }
+  [data-lang="en"] .lang-es { display: none !important; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--gold-light);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+  }
+
+  .brand-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: 0.2px;
+  }
+
+  .brand-text span {
+    display: block;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 10.5px;
+    letter-spacing: 1.6px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  nav.links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  nav.links a {
+    color: #E8F1F8;
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
+
+  nav.links a:hover { color: var(--gold-light); }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    padding: 3px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+  }
+
+  .lang-toggle button {
+    border: none;
+    background: transparent;
+    color: #C9D6E3;
+    padding: 6px 13px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.5px;
+    transition: all .15s ease;
+  }
+
+  .lang-toggle button.active {
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-weight: 600;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--navy);
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(184,134,62,0.14), transparent 45%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    padding: 74px 0 90px;
+    color: #fff;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 42px;
+    line-height: 1.18;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .hero p.lead {
+    font-size: 17px;
+    color: #C9D6E3;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+
+  .btn:hover { transform: translateY(-1px); }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy-deep);
+  }
+  .btn-gold:hover { box-shadow: 0 6px 18px rgba(184,134,62,0.35); }
+
+  .btn-ghost {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.35);
+  }
+  .btn-ghost:hover { border-color: #fff; }
+
+  /* Signature: ID-card panel */
+  .id-card {
+    background: linear-gradient(160deg, #10305A 0%, #0B2545 100%);
+    border: 1px solid rgba(184,134,62,0.45);
+    border-radius: 14px;
+    padding: 26px 28px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+  }
+
+  .id-card::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid var(--gold-light);
+    background:
+      repeating-conic-gradient(from 0deg, rgba(217,174,100,0.25) 0deg 6deg, transparent 6deg 12deg);
+  }
+
+  .id-card::after {
+    content: "★";
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    color: var(--gold-light);
+    font-size: 16px;
+    transform: translate(-50%,-50%);
+  }
+
+  .id-row {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+
+  .id-name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .id-sub {
+    font-size: 13px;
+    color: #B7C6D7;
+    margin-bottom: 22px;
+  }
+
+  .id-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+    border-top: 1px dashed rgba(255,255,255,0.22);
+    padding-top: 18px;
+  }
+
+  .id-field .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #8FA6BE;
+    margin-bottom: 4px;
+  }
+
+  .id-field .value {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #fff;
+  }
+
+  .id-footer {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(255,255,255,0.22);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: #8FA6BE;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---------- Services ---------- */
+  .section { padding: 84px 0; }
+
+  .section-head {
+    max-width: 620px;
+    margin: 0 0 48px;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .section-head p { color: var(--ink-soft); font-size: 15.5px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .service-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px 26px;
+    position: relative;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .service-index {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1.4px;
+    margin-bottom: 14px;
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--sky);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .service-icon svg { width: 22px; height: 22px; stroke: var(--navy); }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 17.5px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- About / trust strip ---------- */
+  .about {
+    background: var(--sky);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .credential-list {
+    list-style: none;
+    margin-top: 22px;
+  }
+
+  .credential-list li {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .credential-list li:last-child { border-bottom: none; }
+
+  .credential-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    min-width: 78px;
+    padding-top: 2px;
+  }
+
+  .credential-list strong {
+    display: block;
+    color: var(--navy);
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+
+  .credential-list span {
+    color: var(--ink-soft);
+    font-size: 13.5px;
+  }
+
+  .about-copy p { color: var(--ink-soft); margin-bottom: 16px; font-size: 15.5px; }
+
+  /* ---------- Contact / hours ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .contact-panel {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 12px;
+    padding: 34px;
+  }
+
+  .contact-panel h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.18);
+    font-size: 14.5px;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row .k { color: #8FA6BE; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.5px; }
+  .contact-row .v { color: #fff; text-align: right; }
+
+  .hours-panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 34px;
+  }
+
+  .hours-panel h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row .day { color: var(--ink-soft); }
+
+  .note-box {
+    margin-top: 18px;
+    background: var(--sky);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-radius: 4px;
+  }
+
+  .map-panel {
+    margin-top: 22px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-panel iframe { display: block; }
+
+  .map-link {
+    display: block;
+    text-align: right;
+    padding: 12px 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    border-top: 1px solid var(--line);
+    background: var(--sky);
+  }
+  .map-link:hover { color: var(--navy); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy-deep);
+    color: #8FA6BE;
+    padding: 34px 0;
+    font-size: 13px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-inner .brand-text { color: #fff; font-size: 15px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-inner { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    nav.links { display: none; }
+    .menu-toggle { display: block; }
+    .services-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    .id-fields { grid-template-columns: 1fr 1fr; }
+    .nav-inner { padding: 14px 20px; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <div class="brand-mark">805</div>
+      <div class="brand-text">
+        805 MultiServices
+        <span class="lang-es">Santa Maria, CA</span>
+        <span class="lang-en">Santa Maria, CA</span>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#servicios"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></a>
+      <a href="#nosotros"><span class="lang-es">Nosotros</span><span class="lang-en">About</span></a>
+      <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
+    </nav>
+    <div class="lang-toggle" role="group" aria-label="Language selector">
+      <button type="button" id="btn-es" class="active" onclick="setLang('es')">ES</button>
+      <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow">
+        <span class="lang-es">Licenciado por el estado de California</span>
+        <span class="lang-en">Licensed in the State of California</span>
+      </div>
+      <h1>
+        <span class="lang-es">Tus trámites, resueltos en un solo lugar.</span>
+        <span class="lang-en">All your paperwork, handled in one place.</span>
+      </h1>
+      <p class="lead">
+        <span class="lang-es">DMV, seguros de auto, huellas digitales (Live Scan), envíos de dinero, paquetería e impuestos — con la confianza de un agente certificado en Santa Maria.</span>
+        <span class="lang-en">DMV, auto insurance, Live Scan fingerprinting, money transfers, package shipping and tax prep — from a certified agent in Santa Maria.</span>
+      </p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn btn-gold">
+          <span class="lang-es">Visítanos hoy</span>
+          <span class="lang-en">Visit us today</span>
+        </a>
+        <a href="#servicios" class="btn btn-ghost">
+          <span class="lang-es">Ver servicios</span>
+          <span class="lang-en">View services</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="id-card" aria-hidden="false">
+      <div class="id-row">
+        <span class="lang-es">Credencial de servicio</span>
+        <span class="lang-en">Service credential</span>
+      </div>
+      <div class="id-name">805 MultiServices</div>
+      <div class="id-sub">
+        <span class="lang-es">1026 W Main St, Suite A — Santa Maria, CA</span>
+        <span class="lang-en">1026 W Main St, Suite A — Santa Maria, CA</span>
+      </div>
+      <div class="id-fields">
+        <div class="id-field">
+          <div class="label"><span class="lang-es">Verificador de vehículos</span><span class="lang-en">Vehicle Verifier</span></div>
+          <div class="value">VV-20941</div>
+        </div>
+        <div class="id-field">
+          <div class="label">EVR / BPA Agent</div>
+          <div class="value">Active</div>
+        </div>
+        <div class="id-field">
+          <div class="label">Live Scan</div>
+          <div class="value">Certifix Channeler</div>
+        </div>
+        <div class="id-field">
+          <div class="label"><span class="lang-es">Idiomas</span><span class="lang-en">Languages</span></div>
+          <div class="value">ES / EN</div>
+        </div>
+      </div>
+      <div class="id-footer">
+        <span><span class="lang-es">Válido para todos los servicios</span><span class="lang-en">Valid for all services</span></span>
+        <span>805-MS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow"><span class="lang-es">Lo que ofrecemos</span><span class="lang-en">What we offer</span></div>
+      <h2><span class="lang-es">Servicios</span><span class="lang-en">Services</span></h2>
+      <p>
+        <span class="lang-es">Seis áreas de servicio, un solo lugar de confianza para tu comunidad.</span>
+        <span class="lang-en">Six service areas, one trusted place for your community.</span>
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-index">01 / DMV</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="7.5" cy="16.5" r="1.2"/><path d="M3 11h18"/><path d="M7 7V5.5A1.5 1.5 0 0 1 8.5 4h7A1.5 1.5 0 0 1 17 5.5V7"/></svg>
+        </div>
+        <h3><span class="lang-es">Registro Vehicular (DMV)</span><span class="lang-en">Vehicle Registration (DMV)</span></h3>
+        <p>
+          <span class="lang-es">Registro, renovaciones, transferencias de título y verificación de vehículos como agente EVR/BPA autorizado.</span>
+          <span class="lang-en">Registration, renewals, title transfers and vehicle verification as an authorized EVR/BPA agent.</span>
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-index">02 / INSURANCE</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+        </div>
+        <h3><span class="lang-es">Seguros de Auto</span><span class="lang-en">Auto Insurance</span></h3>
+        <p>
+          <span class="lang-es">Cotizaciones y pólizas de las aseguradoras más confiables, ajustadas a tu presupuesto.</span>
+          <span class="lang-en">Quotes and policies from trusted carriers, tailored to your budget.</span>
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-index">03 / LIVE SCAN</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5A9 9 0 0 0 3.5 7"/><path d="M17 3.5A9 9 0 0 1 20.5 7"/><path d="M7 20.5A9 9 0 0 1 3.5 17"/><path d="M17 20.5a9 9 0 0 0 3.5-3.5"/><path d="M12 8a4 4 0 0 0-4 4c0 3 1.5 4.5 1.5 6.5"/><path d="M12 8a4 4 0 0 1 4 4c0 1.2-.2 2.1-.5 2.9"/><path d="M9.5 12a2.5 2.5 0 0 1 5 0c0 2.3-1 3.5-1 5.5"/></svg>
+        </div>
+        <h3><span class="lang-es">Huellas Digitales (Live Scan)</span><span class="lang-en">Live Scan Fingerprinting</span></h3>
+        <p>
+          <span class="lang-es">Servicio de Live Scan certificado por Certifix para trámites de empleo, licencias y más.</span>
+          <span class="lang-en">Certifix-certified Live Scan service for employment, licensing and background checks.</span>
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-index">04 / MONEY TRANSFER</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h13"/><path d="M12 7l5 5-5 5"/><path d="M21 6v12"/></svg>
+        </div>
+        <h3><span class="lang-es">Envíos de Dinero a México</span><span class="lang-en">Money Transfers to Mexico</span></h3>
+        <p>
+          <span class="lang-es">Envía dinero de forma rápida y segura a tus seres queridos, con tarifas justas.</span>
+          <span class="lang-en">Send money quickly and securely to your loved ones, at fair rates.</span>
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-index">05 / SHIPPING</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        </div>
+        <h3><span class="lang-es">Paquetería y Envíos</span><span class="lang-en">Package Shipping</span></h3>
+        <p>
+          <span class="lang-es">Envío nacional e internacional de paquetes, con seguimiento y buen precio.</span>
+          <span class="lang-en">Domestic and international package shipping, with tracking and fair pricing.</span>
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-index">06 / TAXES</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7"/><path d="M9 16h7"/><path d="M9 8h3"/></svg>
+        </div>
+        <h3><span class="lang-es">Preparación de Impuestos</span><span class="lang-en">Tax Preparation</span></h3>
+        <p>
+          <span class="lang-es">Declaración de impuestos personales y de negocio, incluyendo trámites de ITIN (W-7).</span>
+          <span class="lang-en">Personal and business tax filing, including ITIN (W-7) applications.</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="nosotros">
+  <div class="container about-inner">
+    <div class="about-copy">
+      <div class="section-eyebrow"><span class="lang-es">Por qué elegirnos</span><span class="lang-en">Why choose us</span></div>
+      <h2><span class="lang-es">Confianza local, servicio certificado</span><span class="lang-en">Local trust, certified service</span></h2>
+      <p>
+        <span class="lang-es">805 MultiServices nació para simplificar los trámites de nuestra comunidad en Santa Maria. Atendemos en español e inglés, con la certeza de trabajar con un agente autorizado por el estado de California.</span>
+        <span class="lang-en">805 MultiServices was built to simplify paperwork for our Santa Maria community. We serve you in Spanish and English, backed by California state-authorized credentials.</span>
+      </p>
+      <p>
+        <span class="lang-es">Desde registro vehicular hasta huellas digitales, cada trámite se procesa directamente en nuestra oficina — sin filas innecesarias ni citas de meses de espera.</span>
+        <span class="lang-en">From vehicle registration to fingerprinting, every transaction is processed right in our office — no unnecessary lines, no months-long waits.</span>
+      </p>
+    </div>
+    <ul class="credential-list">
+      <li>
+        <div class="credential-tag">CA DMV</div>
+        <div>
+          <strong><span class="lang-es">Verificador de Vehículos</span><span class="lang-en">Licensed Vehicle Verifier</span></strong>
+          <span><span class="lang-es">Licencia VV-20941, agente EVR/BPA</span><span class="lang-en">License VV-20941, EVR/BPA agent</span></span>
+        </div>
+      </li>
+      <li>
+        <div class="credential-tag">CERTIFIX</div>
+        <div>
+          <strong><span class="lang-es">Canalizador de Live Scan</span><span class="lang-en">Live Scan Channeler</span></strong>
+          <span><span class="lang-es">Paquete Gold, huellas digitales certificadas</span><span class="lang-en">Gold Package, certified fingerprinting</span></span>
+        </div>
+      </li>
+      <li>
+        <div class="credential-tag">IRS</div>
+        <div>
+          <strong><span class="lang-es">Preparación de Impuestos</span><span class="lang-en">Tax Preparation</span></strong>
+          <span><span class="lang-es">Declaraciones personales, de negocio y trámites de ITIN</span><span class="lang-en">Personal, business filings and ITIN applications</span></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow"><span class="lang-es">Visítanos</span><span class="lang-en">Visit us</span></div>
+      <h2><span class="lang-es">Contacto y horario</span><span class="lang-en">Contact & hours</span></h2>
+      <p>
+        <span class="lang-es">Estamos en Santa Maria, listos para atenderte de lunes a sábado.</span>
+        <span class="lang-en">We're in Santa Maria, ready to help Monday through Saturday.</span>
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-panel">
+        <h3><span class="lang-es">Información de contacto</span><span class="lang-en">Contact information</span></h3>
+        <div class="contact-row">
+          <span class="k"><span class="lang-es">DIRECCIÓN</span><span class="lang-en">ADDRESS</span></span>
+          <span class="v">1026 W Main St, Suite A<br>Santa Maria, CA</span>
+        </div>
+        <div class="contact-row">
+          <span class="k"><span class="lang-es">TELÉFONO</span><span class="lang-en">PHONE</span></span>
+          <span class="v">(805) XXX-XXXX</span>
+        </div>
+        <div class="contact-row">
+          <span class="k">EMAIL</span>
+          <span class="v">info@805multiservices.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="k">WHATSAPP</span>
+          <span class="v"><span class="lang-es">Disponible</span><span class="lang-en">Available</span></span>
+        </div>
+      </div>
+
+      <div class="hours-panel">
+        <h3><span class="lang-es">Horario de atención</span><span class="lang-en">Business hours</span></h3>
+        <div class="hours-row"><span class="day"><span class="lang-es">Lunes – Viernes</span><span class="lang-en">Monday – Friday</span></span><span>9:00 AM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="day"><span class="lang-es">Sábado</span><span class="lang-en">Saturday</span></span><span>9:00 AM – 3:00 PM</span></div>
+        <div class="hours-row"><span class="day"><span class="lang-es">Domingo</span><span class="lang-en">Sunday</span></span><span><span class="lang-es">Cerrado</span><span class="lang-en">Closed</span></span></div>
+        <div class="note-box">
+          <span class="lang-es">Reemplaza el teléfono y correo de ejemplo con tus datos reales antes de publicar la página.</span>
+          <span class="lang-en">Replace the placeholder phone and email with your real details before publishing.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-panel">
+      <iframe
+        src="https://www.google.com/maps?q=1026+W+Main+St+Suite+A,+Santa+Maria,+CA&output=embed"
+        width="100%"
+        height="340"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="805 MultiServices location map">
+      </iframe>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=1026+W+Main+St+Suite+A,+Santa+Maria,+CA" target="_blank" rel="noopener">
+        <span class="lang-es">Abrir en Google Maps →</span>
+        <span class="lang-en">Open in Google Maps →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="brand-text">805 MultiServices</div>
+    <div>
+      <span class="lang-es">© 2026 805 MultiServices. Todos los derechos reservados.</span>
+      <span class="lang-en">© 2026 805 MultiServices. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    try { localStorage.setItem('805ms-lang', lang); } catch(e) {}
+  }
+  (function() {
+    var saved = null;
+    try { saved = localStorage.getItem('805ms-lang'); } catch(e) {}
+    if (saved === 'en') setLang('en');
+  })();
+</script>
+
+</body>
+</html>  

@@ -521,6 +521,7 @@
   .contact-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 12px 0;
     border-bottom: 1px dashed rgba(255,255,255,0.18);
     font-size: 14.5px;
@@ -528,6 +529,8 @@
   .contact-row:last-child { border-bottom: none; }
   .contact-row .k { color: #8FA6BE; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.5px; }
   .contact-row .v { color: #fff; text-align: right; }
+  .contact-row a.v { text-decoration: none; transition: color .15s ease; }
+  .contact-row a.v:hover { color: var(--gold-light); }
 
   .hours-panel {
     background: #fff;
@@ -587,6 +590,47 @@
     background: var(--sky);
   }
   .map-link:hover { color: var(--navy); }
+
+  /* ---------- Review CTA ---------- */
+  .review-cta {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(184,134,62,0.15), transparent 60%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 66px 0;
+  }
+
+  .review-inner {
+    max-width: 620px;
+    text-align: center;
+  }
+
+  .review-stars {
+    color: var(--gold-light);
+    font-size: 30px;
+    letter-spacing: 6px;
+    margin-bottom: 18px;
+  }
+
+  .review-cta h2 {
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #fff;
+  }
+
+  .review-cta p {
+    color: #C9D6E3;
+    font-size: 15.5px;
+    margin-bottom: 28px;
+  }
+
+  .review-btn {
+    font-size: 15.5px;
+    padding: 14px 30px;
+  }
 
   /* ---------- Footer ---------- */
   footer {
@@ -852,7 +896,7 @@
         <div class="credential-tag">CERTIFIX</div>
         <div>
           <strong><span class="lang-es">Canalizador de Live Scan</span><span class="lang-en">Live Scan Channeler</span></strong>
-          <span><span class="lang-es">Paquete Gold, huellas digitales certificadas</span><span class="lang-en">Gold Package, certified fingerprinting</span></span>
+          <span><span class="lang-es">Huellas digitales certificadas</span><span class="lang-en">Gold Package, certified fingerprinting</span></span>
         </div>
       </li>
       <li>
@@ -863,6 +907,24 @@
         </div>
       </li>
     </ul>
+  </div>
+</section>
+
+<section class="review-cta">
+  <div class="container review-inner">
+    <div class="review-stars">★★★★★</div>
+    <h2>
+      <span class="lang-es">¿Te atendimos bien? Cuéntale a la comunidad</span>
+      <span class="lang-en">Happy with our service? Tell the community</span>
+    </h2>
+    <p>
+      <span class="lang-es">Tu reseña en Google nos ayuda muchísimo y le da confianza a más familias de Santa Maria para visitarnos. ¡Solo te toma un minuto!</span>
+      <span class="lang-en">Your Google review helps us a lot and gives more Santa Maria families the confidence to visit us. It only takes a minute!</span>
+    </p>
+    <a href="https://g.page/r/CRBppvlUKtfbEBM/review" target="_blank" rel="noopener" class="btn btn-gold review-btn">
+      <span class="lang-es">Dejar una reseña en Google</span>
+      <span class="lang-en">Leave a Google review</span>
+    </a>
   </div>
 </section>
 
@@ -886,26 +948,26 @@
         </div>
         <div class="contact-row">
           <span class="k"><span class="lang-es">TELÉFONO</span><span class="lang-en">PHONE</span></span>
-          <span class="v">(805) XXX-XXXX</span>
+          <a class="v" href="tel:+18056089192">(805) 608-9192</a>
         </div>
         <div class="contact-row">
           <span class="k">EMAIL</span>
-          <span class="v">info@805multiservices.com</span>
+          <a class="v" href="mailto:805MultiDMV@gmail.com">805MultiDMV@gmail.com</a>
         </div>
         <div class="contact-row">
           <span class="k">WHATSAPP</span>
-          <span class="v"><span class="lang-es">Disponible</span><span class="lang-en">Available</span></span>
+          <a class="v" href="https://wa.me/18056089192" target="_blank" rel="noopener"><span class="lang-es">Enviar mensaje →</span><span class="lang-en">Send a message →</span></a>
         </div>
       </div>
 
       <div class="hours-panel">
         <h3><span class="lang-es">Horario de atención</span><span class="lang-en">Business hours</span></h3>
-        <div class="hours-row"><span class="day"><span class="lang-es">Lunes – Viernes</span><span class="lang-en">Monday – Friday</span></span><span>9:00 AM – 6:00 PM</span></div>
-        <div class="hours-row"><span class="day"><span class="lang-es">Sábado</span><span class="lang-en">Saturday</span></span><span>9:00 AM – 3:00 PM</span></div>
+        <div class="hours-row"><span class="day"><span class="lang-es">Lunes – Viernes</span><span class="lang-en">Monday – Friday</span></span><span>9:00 AM – 7:00 PM</span></div>
+        <div class="hours-row"><span class="day"><span class="lang-es">Sábado</span><span class="lang-en">Saturday</span></span><span>10:00 AM – 5:00 PM</span></div>
         <div class="hours-row"><span class="day"><span class="lang-es">Domingo</span><span class="lang-en">Sunday</span></span><span><span class="lang-es">Cerrado</span><span class="lang-en">Closed</span></span></div>
         <div class="note-box">
-          <span class="lang-es">Reemplaza el teléfono y correo de ejemplo con tus datos reales antes de publicar la página.</span>
-          <span class="lang-en">Replace the placeholder phone and email with your real details before publishing.</span>
+          <span class="lang-es">Si tienes alguna pregunta o duda sobre cualquier tramite, o vas a manejar larga distancia por algun servicio, llamanos!</span>
+          <span class="lang-en">If you have any questions or concerns about any procedure, or if you are going to be driving a long distance for a service, give us a call!</span>
         </div>
       </div>
     </div>

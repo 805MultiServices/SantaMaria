@@ -245,22 +245,8 @@
     border-radius: 14px;
     padding: 26px 28px;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 30px 60px rgba(0,0,0,0.35);
   }
-
-  .id-bear {
-    position: absolute;
-    right: -18px;
-    bottom: -10px;
-    width: 150px;
-    height: auto;
-    pointer-events: none;
-    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
-    z-index: 1;
-  }
-
-  .id-card > *:not(.id-bear) { position: relative; z-index: 2; }
 
   .id-row {
     font-family: var(--font-mono);
@@ -311,7 +297,6 @@
   .id-footer {
     margin-top: 20px;
     padding-top: 14px;
-    padding-right: 120px;
     border-top: 1px dashed rgba(255,255,255,0.22);
     display: flex;
     justify-content: space-between;
@@ -724,7 +709,6 @@
     </div>
 
     <div class="id-card" aria-hidden="false">
-      <img class="id-bear" src="images/oso-full.png" alt="">
       <div class="id-row">
         <span class="lang-es">Credencial de servicio</span>
         <span class="lang-en">Service credential</span>

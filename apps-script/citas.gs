@@ -58,6 +58,11 @@ function doPost(e) {
   if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.correo)) opts.replyTo = v.correo;
   MailApp.sendEmail(opts);
 
+  // Confirmación para el cliente (solo si escribió un correo válido).
+  if (opts.replyTo) {
+    try { sendClientConfirmation_(v); } catch (err) { console.error(err); }
+  }
+
   return json_({ ok: true });
 }
 
@@ -65,8 +70,29 @@ function doPost(e) {
 function testCita() {
   doPost({ parameter: {
     servicio: 'Live Scan (huellas / fingerprints)', nombre: 'Cliente de Prueba', telefono: '(805) 555-0100',
-    correo: '', fecha: '2026-11-02', hora: '10:00 AM', notas: 'Prueba', idioma: 'es'
+    correo: NOTIFY_TO, fecha: '2026-11-02', hora: '10:00 AM', notas: 'Prueba', idioma: 'es'
   } });
+}
+
+function sendClientConfirmation_(v) {
+  const en = v.idioma === 'en';
+  const subject = en
+    ? 'We received your appointment request – 805 MultiServices'
+    : 'Recibimos tu solicitud de cita – 805 MultiServices';
+  const body = en
+    ? 'Hi ' + v.nombre + ',\n\n' +
+      'Thank you for contacting 805 MultiServices. We received your appointment request:\n\n' +
+      'Service: ' + v.servicio + '\nDate: ' + v.fecha + '\nTime: ' + v.hora + '\n\n' +
+      'Your appointment is confirmed once we call or message you. ' +
+      'If you need to change it, reply to this email or call us at (805) 608-9192.\n\n' +
+      '805 MultiServices\n1026 W Main St, Suite A, Santa Maria, CA\n(805) 608-9192'
+    : 'Hola ' + v.nombre + ',\n\n' +
+      'Gracias por contactar a 805 MultiServices. Recibimos tu solicitud de cita:\n\n' +
+      'Servicio: ' + v.servicio + '\nDía: ' + v.fecha + '\nHora: ' + v.hora + '\n\n' +
+      'Tu cita queda confirmada cuando te llamemos o te escribamos. ' +
+      'Si necesitas cambiarla, responde a este correo o llámanos al (805) 608-9192.\n\n' +
+      '805 MultiServices\n1026 W Main St, Suite A, Santa Maria, CA\n(805) 608-9192';
+  MailApp.sendEmail({ to: v.correo, subject: subject, body: body, name: '805 MultiServices', replyTo: NOTIFY_TO });
 }
 
 function clean_(s) {

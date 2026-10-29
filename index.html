@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>805 MultiServices — Santa Maria, CA</title>
 <meta name="description" content="805 MultiServices: DMV, Seguros de Auto, Live Scan, Envíos de Dinero, Paquetería y Preparación de Impuestos en Santa Maria, CA.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -90,7 +92,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 15%;
+    object-position: center;
   }
 
   .brand-text {
@@ -646,6 +648,73 @@
     .visit-banner img { max-height: 260px; }
   }
 
+  /* ---------- CAP (Consumer Assistance Program) ---------- */
+  nav.links a.nav-cap { color: var(--gold-light); font-weight: 600; }
+  nav.links a.nav-cap:hover { color: #fff; }
+
+  .cap { padding: 0 0 84px; }
+  .cap-card {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    align-items: center;
+    background: #F7F7F7;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--gold);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .cap-copy { padding: 44px 44px 40px; }
+  .cap-copy h2 {
+    font-family: var(--font-display);
+    color: var(--navy);
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .cap-copy h2 .amount { color: var(--gold); white-space: nowrap; }
+  .cap-copy > p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 22px; max-width: 60ch; }
+  .cap-amounts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .cap-amount {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px 12px 10px;
+  }
+  .cap-amount strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--navy);
+  }
+  .cap-amount span { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.35; }
+  .cap-amount.top { border-color: var(--gold-light); box-shadow: inset 0 0 0 1px var(--gold-light); }
+  .cap-amount.top strong { color: var(--gold); }
+  .cap-ctas { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .cap-ctas .btn { padding: 14px 28px; font-size: 15.5px; }
+  .cap-ctas .cap-call { color: var(--navy); font-weight: 600; font-size: 14.5px; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+  .cap-fine { margin-top: 20px; font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
+  .cap-fine a { color: var(--blue); }
+  .cap-bear { align-self: end; display: flex; justify-content: center; }
+  .cap-bear img { width: 100%; max-width: 380px; height: auto; }
+
+  @media (max-width: 900px) {
+    .cap-card { grid-template-columns: 1fr; }
+    .cap-bear { order: -1; padding-top: 24px; }
+    .cap-bear img { max-width: 220px; }
+  }
+  @media (max-width: 640px) {
+    .cap-copy { padding: 28px 22px 26px; }
+    .cap-copy h2 { font-size: 25px; }
+    .cap-amounts { grid-template-columns: 1fr; }
+    .cap-amount { display: flex; align-items: baseline; gap: 12px; }
+    .cap-amount strong { min-width: 78px; }
+  }
+
   :focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 2px;
@@ -662,7 +731,7 @@
 <header>
   <div class="nav-inner">
     <a href="#top" class="brand">
-      <div class="brand-mark"><img src="images/oso-face.jpg" alt="805 MultiServices bear logo"></div>
+      <div class="brand-mark"><img src="images/oso-face.jpg" alt="Oso de 805 MultiServices"></div>
       <div class="brand-text">
         805 MultiServices
         <span class="lang-es">Santa Maria, CA</span>
@@ -671,6 +740,7 @@
     </a>
     <nav class="links">
       <a href="#servicios"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></a>
+      <a href="#cap" class="nav-cap"><span class="lang-es">CAP $2,000</span><span class="lang-en">CAP $2,000</span></a>
       <a href="#nosotros"><span class="lang-es">Nosotros</span><span class="lang-en">About</span></a>
       <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
     </nav>
@@ -836,6 +906,61 @@
       <div class="interior-caption">
         <span class="lang-es">Nuestra oficina en Santa Maria — fácil de encontrar sobre W Main St.</span>
         <span class="lang-en">Our Santa Maria office — easy to find on W Main St.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cap" id="cap">
+  <div class="container">
+    <div class="cap-card">
+      <div class="cap-copy">
+        <div class="section-eyebrow">
+          <span class="lang-es">Programa del estado de California · BAR</span>
+          <span class="lang-en">State of California program · BAR</span>
+        </div>
+        <h2>
+          <span class="lang-es">¿Tu carro ya no pasa el smog? Podrías recibir hasta <span class="amount">$2,000</span> por retirarlo</span>
+          <span class="lang-en">Car won't pass smog? You could get up to <span class="amount">$2,000</span> to retire it</span>
+        </h2>
+        <p>
+          <span class="lang-es">El Consumer Assistance Program (CAP) del Bureau of Automotive Repair paga por llevar tu vehículo a un desmantelador autorizado para retirarlo de circulación. El monto depende del ingreso de tu hogar y del resultado de tu smog check. Revisa en 2 minutos si calificas y nosotros te ayudamos con la solicitud.</span>
+          <span class="lang-en">The Bureau of Automotive Repair's Consumer Assistance Program (CAP) pays you to take your vehicle to an authorized dismantler and retire it. The amount depends on your household income and your smog check result. Check in 2 minutes whether you qualify, and we'll help you with the application.</span>
+        </p>
+        <div class="cap-amounts">
+          <div class="cap-amount top">
+            <strong>$2,000</strong>
+            <span class="lang-es">Calificas por ingresos y tu carro no pasó el smog</span>
+            <span class="lang-en">Income-eligible and your car failed smog</span>
+          </div>
+          <div class="cap-amount">
+            <strong>$1,500</strong>
+            <span class="lang-es">Calificas por ingresos y tu carro pasó el smog</span>
+            <span class="lang-en">Income-eligible and your car passed smog</span>
+          </div>
+          <div class="cap-amount">
+            <strong>$1,350</strong>
+            <span class="lang-es">No calificas por ingresos, pero tu carro no pasó el smog</span>
+            <span class="lang-en">Not income-eligible, but your car failed smog</span>
+          </div>
+        </div>
+        <div class="cap-ctas">
+          <a class="btn btn-gold" href="https://805multiservices.github.io/NewApplication/" target="_blank" rel="noopener">
+            <span class="lang-es">Revisar si califico →</span>
+            <span class="lang-en">Check if I qualify →</span>
+          </a>
+          <a class="cap-call" href="tel:+18056089192">
+            <span class="lang-es">o llámanos: (805) 608-9192</span>
+            <span class="lang-en">or call us: (805) 608-9192</span>
+          </a>
+        </div>
+        <p class="cap-fine">
+          <span class="lang-es">805 MultiServices no es una agencia del gobierno; te ayudamos a preparar tu solicitud. El BAR decide la elegibilidad y el monto final. Información oficial en <a href="https://www.bar.ca.gov/cap" target="_blank" rel="noopener">bar.ca.gov/cap</a>.</span>
+          <span class="lang-en">805 MultiServices is not a government agency; we help you prepare your application. BAR determines eligibility and the final amount. Official information at <a href="https://www.bar.ca.gov/cap" target="_blank" rel="noopener">bar.ca.gov/cap</a>.</span>
+        </p>
+      </div>
+      <div class="cap-bear">
+        <img src="images/oso-cap.jpg" width="620" height="692" loading="lazy" alt="Oso de 805 MultiServices con el pulgar arriba">
       </div>
     </div>
   </div>

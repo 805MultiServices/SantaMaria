@@ -365,16 +365,25 @@
     font-weight: 500;
   }
 
+  /* Banner "Visítanos": se muestra la imagen completa y el resto se rellena
+     con el mismo azul de la imagen */
   .visit-banner {
     line-height: 0;
+    background: linear-gradient(180deg, #022E5D 0%, #023163 100%);
   }
 
+  .visit-banner a { display: block; }
+
   .visit-banner img {
-    width: 100%;
-    max-height: 420px;
-    object-fit: cover;
-    object-position: center;
+    width: auto;
+    height: 460px;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
     display: block;
+    /* bordes suaves para que la imagen se funda con el fondo azul */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
   }
 
   /* ---------- About / trust strip ---------- */
@@ -593,7 +602,7 @@
     .services-grid { grid-template-columns: 1fr; }
     .nav-inner { padding: 14px 20px; }
     .interior-photo img { max-height: 260px; }
-    .visit-banner img { max-height: 260px; }
+    .visit-banner img { height: auto; width: 100%; -webkit-mask-image: none; mask-image: none; }
   }
 
   /* ---------- CAP (Consumer Assistance Program) ---------- */

@@ -757,6 +757,22 @@
     .service-card h3 { font-size: 21px; }
   }
 
+  /* Tarjeta de servicio con foto del oso */
+  .service-card.has-photo { padding-top: 0; overflow: hidden; }
+  .service-photo {
+    margin: 0 -26px 22px;
+    height: 240px;
+    padding-top: 14px;
+    background: radial-gradient(circle at 50% 70%, #FFFFFF 0%, var(--sky) 70%);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .service-photo img { height: 100%; width: auto; object-fit: contain; object-position: bottom; transition: transform .25s ease; }
+  .service-card.has-photo:hover .service-photo img { transform: scale(1.04); }
+
   :focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 2px;
@@ -864,11 +880,11 @@
         </p>
       </div>
 
-      <div class="service-card">
-        <div class="service-index">03 / LIVE SCAN</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5A9 9 0 0 0 3.5 7"/><path d="M17 3.5A9 9 0 0 1 20.5 7"/><path d="M7 20.5A9 9 0 0 1 3.5 17"/><path d="M17 20.5a9 9 0 0 0 3.5-3.5"/><path d="M12 8a4 4 0 0 0-4 4c0 3 1.5 4.5 1.5 6.5"/><path d="M12 8a4 4 0 0 1 4 4c0 1.2-.2 2.1-.5 2.9"/><path d="M9.5 12a2.5 2.5 0 0 1 5 0c0 2.3-1 3.5-1 5.5"/></svg>
+      <div class="service-card has-photo">
+        <div class="service-photo">
+          <img src="images/oso-livescan.webp" width="560" height="582" loading="lazy" alt="Oso de 805 MultiServices mostrando su huella digital">
         </div>
+        <div class="service-index">03 / LIVE SCAN</div>
         <h3><span class="lang-es">Huellas Digitales (Live Scan)</span><span class="lang-en">Live Scan Fingerprinting</span></h3>
         <p>
           <span class="lang-es">Servicio de Live Scan certificado por Certifix para trámites de empleo, licencias y más.</span>

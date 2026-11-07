@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Horas Pico · 805 MultiServices</title>
+<link rel="icon" href="../images/favicon.png">
+<style>
+@font-face{font-family:Figtree;src:url(../fonts/figtree-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Figtree;src:url(../fonts/figtree-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Figtree;src:url(../fonts/figtree-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:Figtree;src:url(../fonts/figtree-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  color-scheme:light;
+  --bg:#f4f4f2; --surface-1:#fcfcfb; --surface-2:#efeeea; --border:#dedcd6;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#7a7974;
+  --accent:#2a78d6; --accent-strong:#1c5cab; --accent-soft:#cde2fb;
+  --peak:#104281; --warn:#b26b00;
+  --seq: #cde2fb,#b7d3f6,#9ec5f4,#86b6ef,#6da7ec,#5598e7,#3987e5,#2a78d6,#256abf,#1c5cab,#184f95,#104281,#0d366b;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --bg:#121211; --surface-1:#1a1a19; --surface-2:#252523; --border:#33332f;
+    --text-primary:#f0efec; --text-secondary:#c3c2b7; --text-muted:#8f8e86;
+    --accent:#3987e5; --accent-strong:#5598e7; --accent-soft:#184f95;
+    --peak:#9ec5f4; --warn:#e0a030;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121211; --surface-1:#1a1a19; --surface-2:#252523; --border:#33332f;
+  --text-primary:#f0efec; --text-secondary:#c3c2b7; --text-muted:#8f8e86;
+  --accent:#3987e5; --accent-strong:#5598e7; --accent-soft:#184f95;
+  --peak:#9ec5f4; --warn:#e0a030;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text-primary);font-size:14px;line-height:1.4}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;background:var(--surface-1);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+header img{height:34px;width:auto}
+header h1{font-size:18px;margin:0;font-weight:700}
+header .sub{color:var(--text-secondary);font-size:12px}
+header .sp{flex:1}
+.badge{font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;background:var(--surface-2);color:var(--text-secondary)}
+.badge.live{background:#d9f2e6;color:#0b5c39}
+.badge.demo{background:#fdecc8;color:#7a4a00}
+:root[data-theme="dark"] .badge.live{background:#123d2a;color:#9fe0bf}
+:root[data-theme="dark"] .badge.demo{background:#4a3410;color:#f5cf86}
+button,.btn{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+main{padding:16px 20px 40px;max-width:1500px;margin:0 auto}
+
+/* Filtros */
+.filters{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px 16px;margin-bottom:16px}
+.f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f > label,.f > .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary);display:flex;justify-content:space-between;gap:6px}
+.f .val{color:var(--accent-strong);text-transform:none;letter-spacing:0}
+.f input[type=date],.f select{font:inherit;padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:var(--surface-1);color:var(--text-primary);width:100%}
+.f input[type=range]{width:100%;accent-color:var(--accent)}
+.row2{display:flex;gap:6px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);background:var(--surface-1);cursor:pointer;user-select:none;font-weight:600;color:var(--text-secondary)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.f.span2{grid-column:span 2}
+@media (max-width:560px){.f.span2{grid-column:span 1}}
+details.ms{position:relative}
+details.ms summary{list-style:none;padding:6px 8px;border:1px solid var(--border);border-radius:8px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--surface-1)}
+details.ms summary::after{content:"▾";float:right;color:var(--text-muted)}
+details.ms[open] summary{border-color:var(--accent)}
+.ms-pop{position:absolute;z-index:30;top:calc(100% + 4px);left:0;min-width:100%;width:max-content;max-width:320px;max-height:300px;overflow:auto;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:6px}
+.ms-pop .acts{display:flex;gap:6px;padding:2px 2px 6px;border-bottom:1px solid var(--border);margin-bottom:4px;position:sticky;top:-6px;background:var(--surface-1)}
+.ms-pop .acts button{padding:3px 8px;font-size:12px}
+.ms-pop label{display:flex;gap:8px;align-items:center;padding:4px 4px;border-radius:6px;cursor:pointer;font-size:13px}
+.ms-pop label:hover{background:var(--surface-2)}
+.ms-pop .cnt{margin-left:auto;color:var(--text-muted);font-size:12px;font-variant-numeric:tabular-nums}
+.f > label.toggle{text-transform:none;letter-spacing:0;font-weight:500;color:var(--text-primary);justify-content:flex-start}
+.toggle{display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;cursor:pointer}
+.toggle input{accent-color:var(--accent);width:16px;height:16px}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.kpi{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.kpi .k{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary)}
+.kpi .v{font-size:26px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+/* Paneles */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;grid-column:span 12;min-width:0}
+.card.c6{grid-column:span 6}
+.card.c7{grid-column:span 7}
+.card.c5{grid-column:span 5}
+@media (max-width:1000px){.card.c6,.card.c7,.card.c5{grid-column:span 12}}
+.card h2{font-size:15px;margin:0 0 2px;font-weight:700}
+.card .desc{font-size:12px;color:var(--text-secondary);margin:0 0 12px}
+.card .head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.legend{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-secondary)}
+.legend .ramp{display:flex;height:10px;border-radius:3px;overflow:hidden}
+.legend .ramp span{width:16px}
+
+/* Heatmap */
+.hm-wrap{overflow-x:auto}
+table.hm{border-collapse:separate;border-spacing:2px;font-size:11px;font-variant-numeric:tabular-nums;min-width:100%}
+table.hm th{font-weight:600;color:var(--text-secondary);padding:2px 4px;white-space:nowrap}
+table.hm th.rowh{text-align:left;padding-right:8px;font-size:12px;color:var(--text-primary)}
+table.hm td{height:30px;min-width:34px;text-align:center;border-radius:4px;cursor:default;position:relative;font-weight:600}
+table.hm td.off{opacity:.35}
+table.hm td.pk{outline:2px solid var(--peak);outline-offset:-2px}
+table.hm td.zero{background:var(--surface-2);color:var(--text-muted);font-weight:400}
+table.hm tr.tot td{font-weight:700}
+table.hm th.opened{border-bottom:2px solid var(--accent)}
+
+/* Tabla de personal */
+table.staff td{height:28px}
+table.staff td.n0{background:var(--surface-2);color:var(--text-muted)}
+table.std{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+table.std th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary);font-weight:600;border-bottom:1px solid var(--border);padding:6px 8px}
+table.std td{padding:6px 8px;border-bottom:1px solid var(--surface-2)}
+table.std td.r,table.std th.r{text-align:right}
+.bar-in{height:8px;border-radius:0 4px 4px 0;background:var(--accent);min-width:2px}
+
+svg text{font-family:inherit}
+.tip{position:fixed;pointer-events:none;z-index:50;background:var(--text-primary);color:var(--surface-1);font-size:12px;padding:7px 9px;border-radius:7px;line-height:1.35;max-width:260px;opacity:0;transition:opacity .08s;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.tip b{font-weight:700}
+.empty{padding:40px;text-align:center;color:var(--text-secondary)}
+.note{font-size:12px;color:var(--text-secondary);background:var(--surface-2);border-radius:8px;padding:8px 10px;margin-top:10px}
+
+dialog{border:1px solid var(--border);border-radius:12px;background:var(--surface-1);color:var(--text-primary);padding:20px;width:min(520px,92vw)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h3{margin:0 0 8px}
+dialog label{display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin:12px 0 4px}
+dialog input{width:100%;font:inherit;padding:8px;border:1px solid var(--border);border-radius:8px;background:var(--surface-1);color:var(--text-primary)}
+dialog .acts{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+dialog p{font-size:13px;color:var(--text-secondary);margin:4px 0}
+.err{color:#c0392b;font-size:13px;margin-top:8px}
+#loading{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.25);z-index:60;color:#fff;font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <img src="../images/logo-805.webp" alt="805 MultiServices">
+  <div>
+    <h1>Horas pico · DetalleOrden</h1>
+    <div class="sub" id="subtitle">Sin datos cargados</div>
+  </div>
+  <span class="badge" id="srcBadge">—</span>
+  <div class="sp"></div>
+  <button id="btnRefresh" title="Volver a leer la hoja">↻ Actualizar</button>
+  <button id="btnCsv" title="Descargar el mapa de calor en CSV">CSV</button>
+  <button id="btnTheme" title="Tema claro / oscuro">Tema</button>
+  <button id="btnConn" class="primary">Conexión</button>
+</header>
+
+<main>
+  <section class="filters" id="filters" aria-label="Parámetros">
+    <!-- 1-2 Rango de fechas -->
+    <div class="f span2">
+      <div class="lbl">① Rango de fechas</div>
+      <div class="row2">
+        <input type="date" id="pDesde" aria-label="Desde">
+        <input type="date" id="pHasta" aria-label="Hasta">
+      </div>
+      <div class="chips" id="presets">
+        <span class="chip" data-d="30">30 días</span>
+        <span class="chip" data-d="90">90 días</span>
+        <span class="chip on" data-d="180">6 meses</span>
+        <span class="chip" data-d="365">1 año</span>
+        <span class="chip" data-d="0">Todo</span>
+      </div>
+    </div>
+    <!-- 3 Días -->
+    <div class="f span2">
+      <div class="lbl">② Días de la semana</div>
+      <div class="chips" id="pDias"></div>
+    </div>
+    <!-- 4 Empleado -->
+    <div class="f"><div class="lbl">③ Empleado</div><details class="ms" id="pEmp"></details></div>
+    <!-- 5 Servicio -->
+    <div class="f"><div class="lbl">④ Servicio</div><details class="ms" id="pProd"></details></div>
+    <!-- 6 Movimiento -->
+    <div class="f"><div class="lbl">⑤ Tipo de movimiento</div><details class="ms" id="pMov"></details></div>
+    <!-- 7 Forma de pago -->
+    <div class="f"><div class="lbl">⑥ Forma de pago</div><details class="ms" id="pFp"></details></div>
+    <!-- 8 Métrica -->
+    <div class="f">
+      <label for="pMetrica">⑦ Métrica</label>
+      <select id="pMetrica">
+        <option value="tx">Transacciones (filas)</option>
+        <option value="tk">Tickets únicos (visitas)</option>
+        <option value="cl">Clientes únicos</option>
+        <option value="monto">Monto ($ Total venta)</option>
+      </select>
+    </div>
+    <!-- 9 Cálculo -->
+    <div class="f">
+      <label for="pCalc">⑧ Cálculo</label>
+      <select id="pCalc">
+        <option value="avg">Promedio por día trabajado</option>
+        <option value="sum">Total acumulado</option>
+      </select>
+    </div>
+    <!-- 10 Intervalo -->
+    <div class="f">
+      <label for="pIntervalo">⑨ Intervalo</label>
+      <select id="pIntervalo">
+        <option value="60">Cada hora</option>
+        <option value="30">Cada 30 minutos</option>
+        <option value="15">Cada 15 minutos</option>
+      </select>
+    </div>
+    <!-- 11-12 Horario -->
+    <div class="f">
+      <label for="pAbre">⑩ Hora de apertura <span class="val" id="vAbre"></span></label>
+      <input type="range" id="pAbre" min="6" max="13" step="0.5" value="9">
+    </div>
+    <div class="f">
+      <label for="pCierra">⑪ Hora de cierre <span class="val" id="vCierra"></span></label>
+      <input type="range" id="pCierra" min="14" max="22" step="0.5" value="18.5">
+    </div>
+    <!-- 13 Capacidad -->
+    <div class="f">
+      <label for="pCap">⑫ Capacidad por empleado <span class="val" id="vCap"></span></label>
+      <input type="range" id="pCap" min="1" max="12" step="0.5" value="4">
+    </div>
+    <!-- 14 Umbral pico -->
+    <div class="f">
+      <label for="pUmbral">⑬ Umbral de hora pico <span class="val" id="vUmbral"></span></label>
+      <input type="range" id="pUmbral" min="50" max="100" step="5" value="80">
+    </div>
+    <!-- 15 Mínimo para abrir -->
+    <div class="f">
+      <label for="pMinAbrir">⑭ Mínimo para justificar abrir <span class="val" id="vMinAbrir"></span></label>
+      <input type="range" id="pMinAbrir" min="0.5" max="6" step="0.5" value="1">
+    </div>
+    <!-- 16 VOID -->
+    <div class="f">
+      <div class="lbl">⑮ Vigencia</div>
+      <label class="toggle"><input type="checkbox" id="pVoid"> Incluir VOID / cancelados</label>
+    </div>
+    <!-- 17 Auto refresh -->
+    <div class="f">
+      <label for="pAuto">⑯ Auto-actualizar</label>
+      <select id="pAuto">
+        <option value="0">Apagado</option>
+        <option value="5">Cada 5 min</option>
+        <option value="15">Cada 15 min</option>
+        <option value="60">Cada hora</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid">
+    <article class="card">
+      <div class="head">
+        <div>
+          <h2>Mapa de calor: día × hora</h2>
+          <p class="desc" id="hmDesc"></p>
+        </div>
+        <div class="legend" id="hmLegend"></div>
+      </div>
+      <div class="hm-wrap" id="heatmap"></div>
+      <div class="note">Celdas con borde oscuro = franjas pico (≥ umbral del máximo de cada día). Columnas atenuadas = fuera del horario de apertura/cierre elegido.</div>
+    </article>
+
+    <article class="card c7">
+      <h2>Perfil por hora (días seleccionados)</h2>
+      <p class="desc" id="profDesc"></p>
+      <div id="profile"></div>
+    </article>
+
+    <article class="card c5">
+      <h2>Por día de la semana</h2>
+      <p class="desc" id="dowDesc"></p>
+      <div id="dowChart"></div>
+    </article>
+
+    <article class="card">
+      <div class="head">
+        <div>
+          <h2>Personal sugerido por franja</h2>
+          <p class="desc" id="staffDesc"></p>
+        </div>
+      </div>
+      <div class="hm-wrap" id="staff"></div>
+    </article>
+
+    <article class="card c6">
+      <h2>Servicios en horas pico</h2>
+      <p class="desc">Qué se atiende cuando hay más gente (transacciones dentro de las franjas pico).</p>
+      <div id="services"></div>
+    </article>
+
+    <article class="card c6">
+      <h2>Carga por empleado</h2>
+      <p class="desc">Transacciones y qué parte cae en horas pico.</p>
+      <div id="employees"></div>
+    </article>
+  </section>
+</main>
+
+<dialog id="dlgConn">
+  <h3>Conexión con Google Sheets</h3>
+  <p>Pega la URL del Web App de Apps Script (termina en <code>/exec</code>) y el token que generó <code>crearToken</code>. Se guardan solo en este navegador.</p>
+  <label for="inUrl">URL del Web App</label>
+  <input id="inUrl" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off">
+  <label for="inTok">Token</label>
+  <input id="inTok" type="password" autocomplete="off">
+  <div class="err" id="connErr"></div>
+  <div class="acts">
+    <button id="btnDemo" type="button">Ver demo</button>
+    <button id="btnCancel" type="button">Cancelar</button>
+    <button id="btnSave" type="button" class="primary">Conectar</button>
+  </div>
+</dialog>
+<div id="loading">Leyendo DetalleOrden…</div>
+<div class="tip" id="tip"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ---------- utilidades ---------- */
+const $ = s => document.querySelector(s);
+const DOW = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const DOW3 = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+const DOW_ORDER = [1,2,3,4,5,6,0];
+const MOV_NAMES = {111:'➕ Entrada (111)',222:'➖ Salida (222)',444:'444'};
+const store = {
+  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+};
+const fmtInt = n => Math.round(n).toLocaleString('es-US');
+const fmt1 = n => (Math.round(n*10)/10).toLocaleString('es-US',{minimumFractionDigits:n<10&&n%1?1:0,maximumFractionDigits:1});
+const fmtMoney = n => '$' + Math.round(n).toLocaleString('es-US');
+function fmtClock(min){
+  min = ((min%1440)+1440)%1440;
+  let h = Math.floor(min/60), m = min%60, ap = h<12?'am':'pm';
+  let h12 = h%12 || 12;
+  return h12 + (m ? ':' + String(m).padStart(2,'0') : '') + ' ' + ap;
+}
+const hrsLabel = v => fmtClock(Math.round(v*60));
+const ymdToDate = y => new Date(Math.floor(y/10000), Math.floor(y/100)%100-1, y%100);
+const dateToYmd = d => d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate();
+const ymdToIso = y => { const s=String(y); return s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6,8); };
+const isoToYmd = s => s ? +s.replace(/-/g,'') : 0;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* Rampa secuencial (azul) */
+function seqColors(){
+  return getComputedStyle(document.documentElement).getPropertyValue('--seq').split(',').map(s=>s.trim());
+}
+function hex2rgb(h){ h=h.replace('#',''); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
+function seqColor(t){ // t en [0,1]
+  const c = seqColors(); t = Math.max(0,Math.min(1,t));
+  const x = t*(c.length-1), i = Math.floor(x), f = x-i;
+  const a = hex2rgb(c[i]), b = hex2rgb(c[Math.min(i+1,c.length-1)]);
+  const rgb = a.map((v,k)=>Math.round(v+(b[k]-v)*f));
+  return {bg:`rgb(${rgb.join(',')})`, fg: t>0.5 ? '#ffffff' : '#0b0b0b'};
+}
+
+/* ---------- tooltip ---------- */
+const tip = $('#tip');
+function showTip(html, ev){
+  tip.innerHTML = html; tip.style.opacity = 1;
+  const r = tip.getBoundingClientRect();
+  let x = ev.clientX + 14, y = ev.clientY + 14;
+  if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - 14;
+  if (y + r.height > innerHeight - 8) y = ev.clientY - r.height - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip(){ tip.style.opacity = 0; }
+document.addEventListener('mousemove', ev => {
+  const t = ev.target.closest('[data-tip]');
+  if (t) showTip(t.getAttribute('data-tip'), ev); else hideTip();
+});
+
+/* ---------- estado ---------- */
+let RAW = null;         // respuesta del API
+let ROWS = [];          // filas decodificadas
+let SOURCE = 'none';
+let autoTimer = null;
+const sel = { dias:new Set([1,2,3,4,5,6,0]), emp:null, prod:null, mov:null, fp:null };
+
+/* ---------- carga de datos ---------- */
+async function loadLive(){
+  const url = store.get('hp_url'), tok = store.get('hp_tok');
+  if (!url || !tok) { openConn(); return false; }
+  $('#loading').style.display = 'flex';
+  try{
+    const r = await fetch(url + (url.includes('?')?'&':'?') + 'token=' + encodeURIComponent(tok) + '&_=' + Date.now());
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || 'Respuesta inválida');
+    ingest(j, 'live');
+    return true;
+  }catch(err){
+    openConn('No se pudo leer la hoja: ' + err.message);
+    return false;
+  }finally{
+    $('#loading').style.display = 'none';
+  }
+}
+
+function ingest(j, source){
+  const first = !RAW;
+  RAW = j; SOURCE = source;
+  ROWS = j.filas.map(f => {
+    const d = ymdToDate(f[0]);
+    return { ymd:f[0], dow:d.getDay(), min:f[1], mov:f[2], emp:f[3], prod:f[4], cat:f[5], fp:f[6], vig:f[7], total:f[8], ent:f[9], tk:f[10], cl:f[11] };
+  });
+  const badge = $('#srcBadge');
+  badge.className = 'badge ' + (source==='live'?'live':'demo');
+  badge.textContent = source==='live' ? 'EN VIVO · Google Sheets' : 'DEMO · datos inventados';
+  const g = new Date(j.generado);
+  $('#subtitle').textContent = `${fmtInt(ROWS.length)} registros · leído ${g.toLocaleString('es-US',{dateStyle:'medium',timeStyle:'short'})}`;
+  buildFilterLists(first);
+  if (first) applyPreset(180);
+  render();
+}
+
+/* ---------- filtros ---------- */
+function buildDias(){
+  const box = $('#pDias'); box.innerHTML = '';
+  DOW_ORDER.forEach(d => {
+    const c = document.createElement('span');
+    c.className = 'chip' + (sel.dias.has(d)?' on':'');
+    c.textContent = DOW3[d];
+    c.onclick = () => { sel.dias.has(d) ? sel.dias.delete(d) : sel.dias.add(d); c.classList.toggle('on'); render(); };
+    box.appendChild(c);
+  });
+}
+
+function buildMulti(el, key, title, items){
+  // items: [{v, label, n}]
+  const prev = sel[key];
+  const all = new Set(items.map(i=>i.v));
+  sel[key] = prev ? new Set([...prev].filter(v=>all.has(v))) : new Set(all);
+  if (prev && sel[key].size===0) sel[key] = new Set(all);
+  el.dataset.total = items.length;
+  el.innerHTML = `<summary></summary><div class="ms-pop"><div class="acts"><button type="button" data-a="all">Todos</button><button type="button" data-a="none">Ninguno</button></div>${
+    items.map(i=>`<label><input type="checkbox" value="${i.v}" ${sel[key].has(i.v)?'checked':''}> <span>${esc(i.label)}</span><span class="cnt">${fmtInt(i.n)}</span></label>`).join('')
+  }</div>`;
+  const upd = () => {
+    const n = sel[key].size, t = items.length;
+    let txt = n===t ? 'Todos' : n===0 ? 'Ninguno' : n===1 ? items.find(i=>sel[key].has(i.v)).label : `${n} de ${t}`;
+    el.querySelector('summary').textContent = txt;
+  };
+  el.querySelectorAll('input').forEach(inp => inp.onchange = () => {
+    const v = +inp.value; inp.checked ? sel[key].add(v) : sel[key].delete(v); upd(); render();
+  });
+  el.querySelectorAll('[data-a]').forEach(b => b.onclick = () => {
+    const on = b.dataset.a==='all';
+    sel[key] = on ? new Set(all) : new Set();
+    el.querySelectorAll('input').forEach(i=>i.checked=on); upd(); render();
+  });
+  upd();
+}
+
+function buildFilterLists(){
+  const dic = RAW.dic;
+  const count = (field) => { const m = new Map(); ROWS.forEach(r=>m.set(r[field],(m.get(r[field])||0)+1)); return m; };
+  const mk = (field, names) => [...count(field)].map(([v,n])=>({v, n, label: names(v) || '(vacío)'})).sort((a,b)=>b.n-a.n);
+  buildMulti($('#pEmp'), 'emp', 'Empleado', mk('emp', v=>dic.emp[v]));
+  buildMulti($('#pProd'), 'prod', 'Servicio', mk('prod', v=>dic.prod[v]));
+  buildMulti($('#pMov'), 'mov', 'Movimiento', mk('mov', v=>MOV_NAMES[v] || String(v||'(vacío)')));
+  buildMulti($('#pFp'), 'fp', 'Forma de pago', mk('fp', v=>dic.fp[v]));
+}
+// cerrar desplegables al hacer clic afuera
+document.addEventListener('click', ev => {
+  document.querySelectorAll('details.ms[open]').forEach(d => { if (!d.contains(ev.target)) d.open = false; });
+});
+
+function applyPreset(days){
+  if (!ROWS.length) return;
+  let maxY = 0, minY = 99999999;
+  ROWS.forEach(r => { if (r.ymd>maxY) maxY=r.ymd; if (r.ymd<minY) minY=r.ymd; });
+  const end = ymdToDate(maxY);
+  let start = ymdToDate(minY);
+  if (days > 0){ start = new Date(end); start.setDate(start.getDate()-days+1); }
+  $('#pDesde').value = ymdToIso(dateToYmd(start));
+  $('#pHasta').value = ymdToIso(maxY);
+  document.querySelectorAll('#presets .chip').forEach(c=>c.classList.toggle('on', +c.dataset.d===days));
+}
+document.querySelectorAll('#presets .chip').forEach(c => c.onclick = () => { applyPreset(+c.dataset.d); render(); });
+['#pDesde','#pHasta'].forEach(id => $(id).addEventListener('change', () => {
+  document.querySelectorAll('#presets .chip').forEach(c=>c.classList.remove('on')); render();
+}));
+['#pMetrica','#pCalc','#pIntervalo','#pVoid'].forEach(id => $(id).addEventListener('change', render));
+['#pAbre','#pCierra','#pCap','#pUmbral','#pMinAbrir'].forEach(id => $(id).addEventListener('input', render));
+$('#pAuto').addEventListener('change', () => {
+  clearInterval(autoTimer);
+  const m = +$('#pAuto').value;
+  if (m > 0) autoTimer = setInterval(() => { if (SOURCE==='live') loadLive(); }, m*60000);
+});
+
+function params(){
+  return {
+    desde: isoToYmd($('#pDesde').value), hasta: isoToYmd($('#pHasta').value),
+    metrica: $('#pMetrica').value, calc: $('#pCalc').value,
+    iv: +$('#pIntervalo').value,
+    abre: Math.round(+$('#pAbre').value*60), cierra: Math.round(+$('#pCierra').value*60),
+    cap: +$('#pCap').value, umbral: +$('#pUmbral').value/100,
+    minAbrir: +$('#pMinAbrir').value, incluirVoid: $('#pVoid').checked
+  };
+}
+
+/* ---------- cálculo ---------- */
+function isActive(r){
+  const v = (RAW.dic.vig[r.vig] || '').toLowerCase();
+  return v === '' || v === 'activo';
+}
+
+function compute(P){
+  const S = 1440 / P.iv;
+  // Base: rango de fechas + vigencia → días trabajados por día de semana
+  const opDates = [new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set()];
+  const filtered = [];
+  for (const r of ROWS){
+    if (P.desde && r.ymd < P.desde) continue;
+    if (P.hasta && r.ymd > P.hasta) continue;
+    if (!P.incluirVoid && !isActive(r)) continue;
+    opDates[r.dow].add(r.ymd);
+    if (!sel.dias.has(r.dow)) continue;
+    if (!sel.emp.has(r.emp) || !sel.prod.has(r.prod) || !sel.mov.has(r.mov) || !sel.fp.has(r.fp)) continue;
+    filtered.push(r);
+  }
+  const opDays = opDates.map(s=>s.size);
+
+  // Celdas día × franja
+  const val = Array.from({length:7}, () => new Float64Array(S));
+  const tx  = Array.from({length:7}, () => new Float64Array(S));
+  const uniq = (P.metrica==='tk'||P.metrica==='cl') ? Array.from({length:7}, () => Array.from({length:S}, () => new Set())) : null;
+  const uniqDayDow = (P.metrica==='tk'||P.metrica==='cl') ? Array.from({length:7}, () => new Set()) : null;
+  let firstSlot = S, lastSlot = -1;
+  for (const r of filtered){
+    const s = Math.floor(r.min / P.iv);
+    tx[r.dow][s] += 1;
+    if (P.metrica==='tx') val[r.dow][s] += 1;
+    else if (P.metrica==='monto') val[r.dow][s] += r.total;
+    else {
+      const key = P.metrica==='tk' ? r.tk : r.cl;
+      if (key >= 0){ uniq[r.dow][s].add(r.ymd + '|' + key); uniqDayDow[r.dow].add(r.ymd + '|' + key); }
+    }
+    if (s < firstSlot) firstSlot = s;
+    if (s > lastSlot) lastSlot = s;
+  }
+  if (uniq) for (let d=0; d<7; d++) for (let s=0; s<S; s++) val[d][s] = uniq[d][s].size;
+
+  const div = d => P.calc==='avg' ? (opDays[d] || 0) : 1;
+  const cell = (d,s) => { const k = div(d); return k ? val[d][s]/k : 0; };
+  const cellTx = (d,s) => opDays[d] ? tx[d][s]/opDays[d] : 0;
+
+  // Rango de franjas a mostrar
+  const openSlot = Math.floor(P.abre / P.iv), closeSlot = Math.ceil(P.cierra / P.iv) - 1;
+  const s0 = Math.min(openSlot, firstSlot === S ? openSlot : firstSlot);
+  const s1 = Math.max(closeSlot, lastSlot < 0 ? closeSlot : lastSlot);
+  const slots = []; for (let s=s0; s<=s1; s++) slots.push(s);
+
+  const days = DOW_ORDER.filter(d => sel.dias.has(d));
+
+  // Perfil agregado (días seleccionados)
+  const opSel = days.reduce((a,d)=>a+opDays[d],0);
+  const prof = slots.map(s => {
+    let v = 0, t = 0; days.forEach(d => { v += val[d][s]; t += tx[d][s]; });
+    return { s, v: P.calc==='avg' ? (opSel? v/opSel:0) : v, tx: opSel ? t/opSel : 0, rawTx: t };
+  });
+  const profMax = Math.max(0, ...prof.map(p=>p.v));
+  const peakSlots = new Set(prof.filter(p => profMax>0 && p.v >= P.umbral*profMax).map(p=>p.s));
+
+  // Picos por día
+  const dayPeak = {};
+  days.forEach(d => {
+    const mx = Math.max(0, ...slots.map(s=>cell(d,s)));
+    dayPeak[d] = { max: mx, set: new Set(slots.filter(s => mx>0 && cell(d,s) >= P.umbral*mx)) };
+  });
+
+  // Totales
+  let totalVal = 0, totalTx = filtered.length, inHours = 0, inPeak = 0;
+  for (const r of filtered){
+    if (r.min >= P.abre && r.min < P.cierra) inHours++;
+    if (peakSlots.has(Math.floor(r.min/P.iv))) inPeak++;
+  }
+  if (P.metrica==='tx') totalVal = totalTx;
+  else if (P.metrica==='monto') totalVal = filtered.reduce((a,r)=>a+r.total,0);
+  else totalVal = days.reduce((a,d)=>a+uniqDayDow[d].size,0);
+
+  // Por día de la semana
+  const byDow = days.map(d => {
+    let v = 0;
+    if (uniqDayDow) v = uniqDayDow[d].size; else for (let s=0;s<S;s++) v += val[d][s];
+    return { d, v: P.calc==='avg' ? (opDays[d]? v/opDays[d] : 0) : v, op: opDays[d] };
+  });
+
+  return { P, S, filtered, opDays, opSel, val, tx, cell, cellTx, slots, days, prof, profMax, peakSlots, dayPeak, totalVal, totalTx, inHours, inPeak, byDow, openSlot, closeSlot };
+}
+
+/* ---------- render ---------- */
+let LAST = null;
+function render(){
+  const P = params();
+  $('#vAbre').textContent = hrsLabel(+$('#pAbre').value);
+  $('#vCierra').textContent = hrsLabel(+$('#pCierra').value);
+  $('#vCap').textContent = fmt1(P.cap) + ' trans./hora';
+  $('#vUmbral').textContent = Math.round(P.umbral*100) + '% del máximo';
+  $('#vMinAbrir').textContent = fmt1(P.minAbrir) + ' trans./hora';
+  if (!RAW || !sel.emp) return;
+  const C = compute(P); LAST = C;
+  renderKpis(C); renderHeatmap(C); renderProfile(C); renderDow(C); renderStaff(C); renderServices(C); renderEmployees(C);
+}
+
+const metricName = P => ({tx:'transacciones',tk:'tickets',cl:'clientes',monto:'dólares'}[P.metrica]);
+const fmtVal = (P, v) => P.metrica==='monto' ? fmtMoney(v) : (P.calc==='avg' ? fmt1(v) : fmtInt(v));
+const slotLabel = (s, iv) => fmtClock(s*iv);
+const slotRange = (s, iv) => fmtClock(s*iv) + '–' + fmtClock((s+1)*iv);
+
+function renderKpis(C){
+  const P = C.P;
+  if (!C.filtered.length){ $('#kpis').innerHTML = `<div class="kpi" style="grid-column:1/-1"><div class="empty">No hay registros con estos filtros.</div></div>`; return; }
+  const pk = C.prof.reduce((a,b)=>b.v>a.v?b:a, C.prof[0]);
+  const bestDay = C.byDow.reduce((a,b)=>b.v>a.v?b:a, C.byDow[0]);
+  // bloque pico continuo alrededor del máximo
+  let a = C.prof.indexOf(pk), b = a;
+  while (a>0 && C.peakSlots.has(C.prof[a-1].s)) a--;
+  while (b<C.prof.length-1 && C.peakSlots.has(C.prof[b+1].s)) b++;
+  const block = fmtClock(C.prof[a].s*P.iv) + ' – ' + fmtClock((C.prof[b].s+1)*P.iv);
+  const out = C.totalTx - C.inHours;
+  const perDay = C.opSel ? C.totalVal / C.opSel : 0;
+  const k = [
+    ['Total ' + metricName(P), P.metrica==='monto'?fmtMoney(C.totalVal):fmtInt(C.totalVal), `${fmtInt(C.opSel)} días trabajados en el rango`],
+    ['Promedio por día', P.metrica==='monto'?fmtMoney(perDay):fmt1(perDay), metricName(P) + ' por día trabajado'],
+    ['Hora pico', slotRange(pk.s,P.iv), `${fmtVal(P,pk.v)} ${metricName(P)}${P.calc==='avg'?' en promedio':''}`],
+    ['Bloque pico', block, `franjas ≥ ${Math.round(P.umbral*100)}% del máximo`],
+    ['Día más fuerte', DOW[bestDay.d], `${fmtVal(P,bestDay.v)} ${metricName(P)}${P.calc==='avg'?' por día':''}`],
+    ['En horas pico', (C.totalTx? Math.round(C.inPeak/C.totalTx*100):0) + '%', `de las transacciones caen en ${C.peakSlots.size} franja(s)`],
+    ['Fuera de horario', fmtInt(out), `transacciones antes de ${fmtClock(P.abre)} o después de ${fmtClock(P.cierra)} (${C.totalTx?Math.round(out/C.totalTx*100):0}%)`]
+  ];
+  $('#kpis').innerHTML = k.map(([a,b,c])=>`<div class="kpi"><div class="k">${a}</div><div class="v">${b}</div><div class="s">${c}</div></div>`).join('');
+}
+
+function legendRamp(maxLabel){
+  const c = seqColors();
+  return `<span>0</span><span class="ramp">${c.map(x=>`<span style="background:${x}"></span>`).join('')}</span><span>${maxLabel}</span>`;
+}
+
+function renderHeatmap(C){
+  const P = C.P;
+  $('#hmDesc').textContent = `${P.calc==='avg'?'Promedio de':'Total de'} ${metricName(P)} por ${P.iv===60?'hora':P.iv+' minutos'}${P.calc==='avg'?' (dividido entre los días trabajados de cada día de la semana)':''}.`;
+  if (!C.filtered.length){ $('#heatmap').innerHTML = '<div class="empty">Sin datos.</div>'; $('#hmLegend').innerHTML=''; return; }
+  let mx = 0; C.days.forEach(d => C.slots.forEach(s => { mx = Math.max(mx, C.cell(d,s)); }));
+  $('#hmLegend').innerHTML = legendRamp(fmtVal(P,mx));
+  const showNums = P.iv >= 30;
+  const head = C.slots.map(s => {
+    const lab = (s*P.iv)%60===0 || P.iv===60 ? fmtClock(s*P.iv).replace(' ','') : '';
+    const open = s>=C.openSlot && s<=C.closeSlot;
+    return `<th class="${open?'opened':''}">${lab}</th>`;
+  }).join('');
+  const rows = C.days.map(d => {
+    const tds = C.slots.map(s => {
+      const v = C.cell(d,s), off = !(s>=C.openSlot && s<=C.closeSlot);
+      const pk = C.dayPeak[d].set.has(s);
+      const tipTxt = `<b>${DOW[d]} ${slotRange(s,P.iv)}</b><br>${fmtVal(P,v)} ${metricName(P)}${P.calc==='avg'?' en promedio':''}<br>${fmtInt(C.tx[d][s])} transacciones en ${fmtInt(C.opDays[d])} ${DOW[d].toLowerCase()}s${pk?'<br><b>Franja pico</b>':''}${off?'<br>Fuera de horario':''}`;
+      if (v <= 0) return `<td class="zero ${off?'off':''}" data-tip="${esc(tipTxt)}">${showNums?'·':''}</td>`;
+      const c = seqColor(mx? v/mx : 0);
+      return `<td class="${off?'off':''} ${pk?'pk':''}" style="background:${c.bg};color:${c.fg}" data-tip="${esc(tipTxt)}">${showNums ? fmtVal(P,v).replace('$','') : ''}</td>`;
+    }).join('');
+    return `<tr><th class="rowh">${DOW3[d]} <span style="color:var(--text-muted);font-weight:400">(${C.opDays[d]})</span></th>${tds}</tr>`;
+  }).join('');
+  $('#heatmap').innerHTML = `<table class="hm"><thead><tr><th></th>${head}</tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function svgEl(w,h,inner){ return `<svg width="100%" viewBox="0 0 ${w} ${h}" role="img" style="display:block;max-width:100%">${inner}</svg>`; }
+
+function renderProfile(C){
+  const P = C.P, box = $('#profile');
+  $('#profDesc').textContent = `${P.calc==='avg'?'Promedio por día trabajado':'Total'} de ${metricName(P)} en ${C.days.length===7?'todos los días':C.days.map(d=>DOW3[d]).join(', ')}. Barras oscuras = hora pico; línea punteada = umbral.`;
+  if (!C.filtered.length){ box.innerHTML='<div class="empty">Sin datos.</div>'; return; }
+  const W = Math.max(320, box.clientWidth || 700), H = 260, m = {l:44,r:10,t:16,b:34};
+  const iw = W-m.l-m.r, ih = H-m.t-m.b, n = C.prof.length;
+  const bw = iw/n, mx = C.profMax || 1;
+  const yt = niceTicks(mx);
+  const y = v => m.t + ih - v/yt[yt.length-1]*ih;
+  let g = '';
+  yt.forEach(t => { g += `<line x1="${m.l}" x2="${W-m.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--border)" stroke-width="1"/><text x="${m.l-6}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="var(--text-muted)">${P.metrica==='monto'?fmtMoney(t):fmt1(t)}</text>`; });
+  // horario
+  const xo = m.l + (C.openSlot - C.prof[0].s)*bw, xc = m.l + (C.closeSlot + 1 - C.prof[0].s)*bw;
+  g += `<rect x="${Math.max(m.l,xo)}" y="${m.t}" width="${Math.max(0,Math.min(W-m.r,xc)-Math.max(m.l,xo))}" height="${ih}" fill="var(--accent-soft)" opacity=".25"/>`;
+  const step = Math.max(1, Math.ceil(n / (W/56)));
+  C.prof.forEach((p,i) => {
+    const x = m.l + i*bw + Math.min(2, bw*0.15), w = Math.max(1, bw - Math.min(4, bw*0.3));
+    const h = Math.max(0, m.t+ih - y(p.v)), pk = C.peakSlots.has(p.s);
+    const r = Math.min(4, w/2, h);
+    const top = m.t+ih-h;
+    const path = h>0 ? `M${x},${m.t+ih} V${top+r} Q${x},${top} ${x+r},${top} H${x+w-r} Q${x+w},${top} ${x+w},${top+r} V${m.t+ih} Z` : '';
+    const tipTxt = `<b>${slotRange(p.s,P.iv)}</b><br>${fmtVal(P,p.v)} ${metricName(P)}${P.calc==='avg'?' en promedio':''}<br>${fmtInt(p.rawTx)} transacciones en total${pk?'<br><b>Hora pico</b>':''}`;
+    g += `<g data-tip="${esc(tipTxt)}"><rect x="${m.l+i*bw}" y="${m.t}" width="${bw}" height="${ih}" fill="transparent"/>${path?`<path d="${path}" fill="${pk?'var(--peak)':'var(--accent)'}" opacity="${pk?1:.75}"/>`:''}</g>`;
+    if (i % step === 0) g += `<text x="${m.l+i*bw+bw/2}" y="${H-m.b+16}" text-anchor="middle" font-size="11" fill="var(--text-secondary)">${fmtClock(p.s*P.iv).replace(' ','')}</text>`;
+  });
+  const thr = C.profMax*P.umbral;
+  g += `<line x1="${m.l}" x2="${W-m.r}" y1="${y(thr)}" y2="${y(thr)}" stroke="var(--peak)" stroke-dasharray="4 4" stroke-width="1.5"/>`;
+  g += `<line x1="${m.l}" x2="${W-m.r}" y1="${m.t+ih}" y2="${m.t+ih}" stroke="var(--text-muted)" stroke-width="1"/>`;
+  box.innerHTML = svgEl(W,H,g);
+}
+
+function niceTicks(max){
+  if (max <= 0) return [0,1];
+  const raw = max/4, p = Math.pow(10, Math.floor(Math.log10(raw)));
+  const st = [1,2,2.5,5,10].map(k=>k*p).find(s=>s>=raw);
+  const out = []; for (let v=0; v<=max+st*0.999; v+=st) out.push(+v.toFixed(6));
+  return out;
+}
+
+function renderDow(C){
+  const P = C.P, box = $('#dowChart');
+  $('#dowDesc').textContent = `${P.calc==='avg'?'Promedio de':'Total de'} ${metricName(P)} por día. Entre paréntesis: días trabajados en el rango.`;
+  if (!C.filtered.length){ box.innerHTML='<div class="empty">Sin datos.</div>'; return; }
+  const W = Math.max(280, box.clientWidth || 400), rowH = 30, H = C.byDow.length*rowH + 8, lab = 92, vw = 70;
+  const mx = Math.max(...C.byDow.map(b=>b.v)) || 1;
+  let g = '';
+  C.byDow.forEach((b,i) => {
+    const y = 4 + i*rowH, w = Math.max(2, (W-lab-vw)*b.v/mx);
+    const best = b.v === mx;
+    g += `<g data-tip="${esc(`<b>${DOW[b.d]}</b><br>${fmtVal(P,b.v)} ${metricName(P)}${P.calc==='avg'?' por día':''}<br>${b.op} días trabajados`)}">
+      <rect x="0" y="${y}" width="${W}" height="${rowH}" fill="transparent"/>
+      <text x="0" y="${y+rowH/2+4}" font-size="12" fill="var(--text-primary)">${DOW[b.d]} <tspan fill="var(--text-muted)">(${b.op})</tspan></text>
+      <path d="M${lab},${y+6} H${lab+w-4} Q${lab+w},${y+6} ${lab+w},${y+10} V${y+rowH-10} Q${lab+w},${y+rowH-6} ${lab+w-4},${y+rowH-6} H${lab} Z" fill="${best?'var(--peak)':'var(--accent)'}" opacity="${best?1:.75}"/>
+      <text x="${lab+w+6}" y="${y+rowH/2+4}" font-size="12" font-weight="600" fill="var(--text-primary)">${fmtVal(P,b.v)}</text></g>`;
+  });
+  box.innerHTML = svgEl(W,H,g);
+}
+
+function renderStaff(C){
+  const P = C.P, capSlot = P.cap * P.iv/60, minSlot = P.minAbrir * P.iv/60;
+  $('#staffDesc').innerHTML = `Empleados necesarios = transacciones promedio de la franja ÷ capacidad (${fmt1(P.cap)}/hora por empleado), redondeado hacia arriba; mínimo 1 dentro del horario. “Horario sugerido” = primera y última franja con al menos ${fmt1(P.minAbrir)} transacciones/hora en promedio. Siempre se calcula con transacciones, sin importar la métrica elegida.`;
+  if (!C.filtered.length){ $('#staff').innerHTML='<div class="empty">Sin datos.</div>'; return; }
+  let maxN = 1;
+  const grid = C.days.map(d => C.slots.map(s => {
+    const a = C.cellTx(d,s), inH = s>=C.openSlot && s<=C.closeSlot;
+    let n = a>0 ? Math.ceil(a/capSlot - 1e-9) : 0;
+    if (inH && n < 1 && C.opDays[d] > 0) n = 1;
+    maxN = Math.max(maxN, n); return {a,n,inH};
+  }));
+  const head = C.slots.map(s => `<th class="${s>=C.openSlot&&s<=C.closeSlot?'opened':''}">${(s*P.iv)%60===0||P.iv===60?fmtClock(s*P.iv).replace(' ',''):''}</th>`).join('');
+  const rows = C.days.map((d,i) => {
+    const tds = grid[i].map((c,j) => {
+      const s = C.slots[j];
+      const t = `<b>${DOW[d]} ${slotRange(s,P.iv)}</b><br>${fmt1(c.a)} transacciones promedio<br>Capacidad por empleado: ${fmt1(capSlot)} en ${P.iv} min<br><b>${c.n} empleado(s)</b>${c.inH?'':'<br>Fuera de horario'}`;
+      if (!c.n) return `<td class="n0 ${c.inH?'':'off'}" data-tip="${esc(t)}">·</td>`;
+      const col = seqColor(0.15 + 0.85*(c.n-1)/Math.max(1,maxN-1));
+      return `<td class="${c.inH?'':'off'}" style="background:${col.bg};color:${col.fg}" data-tip="${esc(t)}">${c.n}</td>`;
+    }).join('');
+    const okSlots = C.slots.filter(s => C.cellTx(d,s) >= minSlot);
+    const sug = okSlots.length ? fmtClock(okSlots[0]*P.iv) + ' – ' + fmtClock((okSlots[okSlots.length-1]+1)*P.iv) : '—';
+    const peakN = Math.max(0, ...grid[i].map(c=>c.n));
+    const hrsPersona = grid[i].reduce((a,c)=>a+c.n,0) * P.iv/60;
+    return `<tr><th class="rowh">${DOW3[d]}</th>${tds}<td style="background:var(--surface-2);text-align:left;padding:0 8px;white-space:nowrap;font-weight:600">${sug}</td><td style="background:var(--surface-2);padding:0 8px">${peakN}</td><td style="background:var(--surface-2);padding:0 8px">${fmt1(hrsPersona)}</td></tr>`;
+  }).join('');
+  $('#staff').innerHTML = `<table class="hm staff"><thead><tr><th></th>${head}<th style="text-align:left">Horario sugerido</th><th>Máx.</th><th>Horas‑persona</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function renderServices(C){
+  const P = C.P, box = $('#services');
+  const all = new Map(), pk = new Map();
+  C.filtered.forEach(r => {
+    all.set(r.prod, (all.get(r.prod)||0)+1);
+    if (C.peakSlots.has(Math.floor(r.min/P.iv))) pk.set(r.prod, (pk.get(r.prod)||0)+1);
+  });
+  const totPk = [...pk.values()].reduce((a,b)=>a+b,0);
+  if (!totPk){ box.innerHTML = '<div class="empty">Sin datos en horas pico.</div>'; return; }
+  const list = [...pk].sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const mx = list[0][1];
+  box.innerHTML = `<table class="std"><thead><tr><th>Servicio</th><th style="width:40%"></th><th class="r">En pico</th><th class="r">% del pico</th><th class="r">% del servicio en pico</th></tr></thead><tbody>${
+    list.map(([p,n]) => `<tr><td>${esc(RAW.dic.prod[p]||'(vacío)')}</td><td><div class="bar-in" style="width:${n/mx*100}%"></div></td><td class="r">${fmtInt(n)}</td><td class="r">${Math.round(n/totPk*100)}%</td><td class="r">${Math.round(n/all.get(p)*100)}%</td></tr>`).join('')
+  }</tbody></table>`;
+}
+
+function renderEmployees(C){
+  const P = C.P, box = $('#employees');
+  const m = new Map();
+  C.filtered.forEach(r => {
+    const o = m.get(r.emp) || {n:0, pk:0, days:new Set()};
+    o.n++; o.days.add(r.ymd);
+    if (C.peakSlots.has(Math.floor(r.min/P.iv))) o.pk++;
+    m.set(r.emp, o);
+  });
+  if (!m.size){ box.innerHTML='<div class="empty">Sin datos.</div>'; return; }
+  const list = [...m].sort((a,b)=>b[1].n-a[1].n);
+  const mx = list[0][1].n;
+  box.innerHTML = `<table class="std"><thead><tr><th>Empleado</th><th style="width:34%"></th><th class="r">Trans.</th><th class="r">Días</th><th class="r">Prom./día</th><th class="r">% en pico</th></tr></thead><tbody>${
+    list.map(([e,o]) => `<tr><td>${esc(RAW.dic.emp[e]||'(vacío)')}</td><td><div class="bar-in" style="width:${o.n/mx*100}%"></div></td><td class="r">${fmtInt(o.n)}</td><td class="r">${o.days.size}</td><td class="r">${fmt1(o.n/o.days.size)}</td><td class="r">${Math.round(o.pk/o.n*100)}%</td></tr>`).join('')
+  }</tbody></table><div class="note">“805 MultiServices” agrupa lo capturado con la cuenta general de la oficina.</div>`;
+}
+
+/* ---------- CSV ---------- */
+$('#btnCsv').onclick = () => {
+  if (!LAST) return;
+  const C = LAST, P = C.P;
+  const lines = [['Dia', ...C.slots.map(s=>slotRange(s,P.iv))].join(',')];
+  C.days.forEach(d => lines.push([DOW[d], ...C.slots.map(s=>(Math.round(C.cell(d,s)*100)/100))].join(',')));
+  const blob = new Blob(['﻿' + lines.join('\n')], {type:'text/csv'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `horas-pico-${P.metrica}-${$('#pDesde').value}_${$('#pHasta').value}.csv`; a.click();
+};
+
+/* ---------- conexión ---------- */
+const dlg = $('#dlgConn');
+function openConn(msg){
+  $('#inUrl').value = store.get('hp_url') || '';
+  $('#inTok').value = store.get('hp_tok') || '';
+  $('#connErr').textContent = msg || '';
+  if (!dlg.open) dlg.showModal();
+}
+$('#btnConn').onclick = () => openConn();
+$('#btnCancel').onclick = () => dlg.close();
+$('#btnSave').onclick = async () => {
+  const u = $('#inUrl').value.trim(), t = $('#inTok').value.trim();
+  if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(u)) { $('#connErr').textContent = 'La URL debe ser de script.google.com y terminar en /exec'; return; }
+  if (!t) { $('#connErr').textContent = 'Falta el token'; return; }
+  store.set('hp_url', u); store.set('hp_tok', t);
+  dlg.close();
+  await loadLive();
+};
+$('#btnDemo').onclick = () => { dlg.close(); ingest(makeDemo(), 'demo'); };
+$('#btnRefresh').onclick = () => SOURCE==='demo' ? ingest(makeDemo(), 'demo') : loadLive();
+
+/* ---------- tema ---------- */
+$('#btnTheme').onclick = () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  const nx = cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme = nx; store.set('hp_theme', nx); render();
+};
+{ const t = store.get('hp_theme'); if (t) document.documentElement.dataset.theme = t; }
+
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(render, 150); });
+
+/* ---------- datos DEMO (inventados, solo para ver el diseño) ---------- */
+function makeDemo(){
+  let seed = 805; const rnd = () => (seed = (seed*16807) % 2147483647) / 2147483647;
+  const emp = ['805 MultiServices','Dalia Cuadra','Alejandra Maciel','Gabriel Hernandez'];
+  const prod = ['DMV','ENVIO/BILL','INSUR','LIVESCAN','OTRO','PROMO ENVIOS','TAXES','CITA','ACTA','PAGAR DEUDA'];
+  const pw = [30,26,16,9,7,4,3,2,2,1];
+  const fp = ['AAA','BBB','TTT','XXX','CCC'], fw = [62,20,12,4,2];
+  const pick = w => { let t = rnd()*w.reduce((a,b)=>a+b,0); for (let i=0;i<w.length;i++){ if ((t-=w[i])<0) return i; } return w.length-1; };
+  const dayW = [0.55,1.15,1.0,0.95,1.0,1.25,0.9]; // Dom..Sáb
+  const hourCurve = h => Math.max(0, Math.exp(-((h-13.3)**2)/(2*2.3**2)) + 0.35*Math.exp(-((h-16.6)**2)/(2*0.9**2)));
+  const filas = []; let tk = 0, cl = 0;
+  const end = new Date(); end.setHours(0,0,0,0);
+  for (let k=420; k>=0; k--){
+    const d = new Date(end); d.setDate(d.getDate()-k);
+    const dw = d.getDay(); if (rnd() < 0.04) continue;
+    const n = Math.round((24 + rnd()*10) * dayW[dw]);
+    for (let i=0;i<n;i++){
+      let h; do { h = 8.5 + rnd()*10.5; } while (rnd() > hourCurve(h));
+      const min = Math.floor(h*60), p = pick(pw), mov = rnd()<0.08 ? 222 : 111;
+      const items = rnd()<0.25 ? 2 : 1; const t = tk++;
+      for (let j=0;j<items;j++) filas.push([dateToYmd(d), min, mov, pick([3,4,3,1]), j?pick(pw):p, 0, pick(fw), rnd()<0.01?1:0, Math.round(20+rnd()*300), 0, t, Math.floor(rnd()*2500)]);
+    }
+  }
+  return { ok:true, generado:new Date().toISOString(), dic:{emp, prod, cat:[''], fp, vig:['Activo','VOID']}, filas };
+}
+
+/* ---------- inicio ---------- */
+buildDias(); render();
+if (store.get('hp_url') && store.get('hp_tok')) loadLive(); else openConn();
+})();
+</script>
+</body>
+</html>

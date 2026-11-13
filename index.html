@@ -62,9 +62,9 @@
     --navy-deep: #071A33;
     --blue: #1E5A8E;
     --sky: #E8F1F8;
-    --gold: #B8863E;
-    --gold-light: #D9AE64;
-    --gold-text: #8A6220; /* dorado para texto sobre fondo claro (contraste ≥ 4.5:1) */
+    --gold: #FFC72C;
+    --gold-light: #FFD866;
+    --gold-text: #1E5A8E; /* acento para texto sobre fondo claro (contraste ≥ 4.5:1) */
     --cream: #FBFAF7;
     --ink: #1A222C;
     --ink-soft: #4A5568;
@@ -219,7 +219,7 @@
   /* ---------- Hero ---------- */
   .hero {
     background:
-      radial-gradient(circle at 85% 15%, rgba(184,134,62,0.18), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(30,90,142,0.45), transparent 45%),
       linear-gradient(180deg, rgba(11,37,69,0.94) 0%, rgba(7,26,51,0.97) 100%),
       url('images/edificio.jpg');
     background-size: cover;
@@ -281,7 +281,7 @@
     background: var(--gold);
     color: var(--navy-deep);
   }
-  .btn-gold:hover { box-shadow: 0 6px 18px rgba(184,134,62,0.35); }
+  .btn-gold:hover { box-shadow: 0 6px 18px rgba(255,199,44,0.40); }
 
   .btn-ghost {
     background: transparent;
@@ -523,7 +523,7 @@
   /* ---------- Review CTA ---------- */
   .review-cta {
     background:
-      radial-gradient(circle at 50% 0%, rgba(184,134,62,0.15), transparent 60%),
+      radial-gradient(circle at 50% 0%, rgba(30,90,142,0.40), transparent 60%),
       linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
     color: #fff;
     text-align: center;
@@ -770,6 +770,9 @@
   }
   .service-photo img { height: 100%; width: auto; object-fit: contain; object-position: bottom; transition: transform .25s ease; }
   .service-card.has-photo:hover .service-photo img { transform: scale(1.04); }
+  /* Foto real (en vez del oso): llena todo el recuadro */
+  .service-photo.is-photo { padding-top: 0 !important; align-items: stretch; }
+  .service-photo.is-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
   /* Logo 805 (fondo transparente, sin círculo) */
   .brand-mark { width: 92px; height: 92px; border: none; border-radius: 0; background: transparent; overflow: visible; margin: -12px 0; }
@@ -905,8 +908,8 @@
         <span class="lang-en">All your paperwork, handled in one place.</span>
       </h1>
       <p class="lead">
-        <span class="lang-es">DMV, seguros de auto, huellas digitales (Live Scan), envíos de dinero, paquetería e impuestos — con la confianza de un agente certificado en Santa Maria.</span>
-        <span class="lang-en">DMV, auto insurance, Live Scan fingerprinting, money transfers, package shipping and tax prep — from a certified agent in Santa Maria.</span>
+        <span class="lang-es">Huellas digitales (Live Scan), seguros de auto, registro vehicular (DMV), paquetería, impuestos y envíos de dinero — con la confianza de un agente certificado en Santa Maria.</span>
+        <span class="lang-en">Live Scan fingerprinting, auto insurance, vehicle registration (DMV), package shipping, tax prep and money transfers — from a certified agent in Santa Maria.</span>
       </p>
       <div class="hero-ctas">
         <a href="https://calendar.app.google/b1kdeUvHWrVFGEjN6" target="_blank" rel="noopener" class="btn btn-gold">
@@ -939,22 +942,21 @@
     </div>
 
     <div class="services-grid">
-
       <div class="service-card has-photo">
         <div class="service-photo">
-          <img src="images/oso-dmv.webp" width="530" height="600" loading="lazy" alt="Oso de 805 MultiServices con las llaves de un carro">
+          <img src="images/oso-livescan.webp" width="560" height="582" loading="lazy" alt="Oso de 805 MultiServices mostrando su huella digital">
         </div>
-        <div class="service-index">01 / DMV</div>
-        <h3><span class="lang-es">Registro Vehicular (DMV)</span><span class="lang-en">Vehicle Registration (DMV)</span></h3>
+        <div class="service-index">01 / LIVE SCAN</div>
+        <h3><span class="lang-es">Huellas Digitales (Live Scan)</span><span class="lang-en">Live Scan Fingerprinting</span></h3>
         <p>
-          <span class="lang-es">Registro, renovaciones, transferencias de título y verificación de vehículos como agente EVR/BPA autorizado.</span>
-          <span class="lang-en">Registration, renewals, title transfers and vehicle verification as an authorized EVR/BPA agent.</span>
+          <span class="lang-es">Servicio de Live Scan certificado por Certifix para trámites de empleo, licencias y más.</span>
+          <span class="lang-en">Certifix-certified Live Scan service for employment, licensing and background checks.</span>
         </p>
       </div>
 
       <div class="service-card has-photo">
-        <div class="service-photo">
-          <img src="images/oso-seguro.webp" width="535" height="600" loading="lazy" alt="Oso de 805 MultiServices cuidando un carro en sus manos">
+        <div class="service-photo is-photo">
+          <img src="images/seguro-auto.webp" width="1000" height="520" loading="lazy" alt="Botón de encendido de carro con las palabras Car Insurance">
         </div>
         <div class="service-index">02 / INSURANCE</div>
         <h3><span class="lang-es">Seguros de Auto</span><span class="lang-en">Auto Insurance</span></h3>
@@ -965,34 +967,22 @@
       </div>
 
       <div class="service-card has-photo">
-        <div class="service-photo">
-          <img src="images/oso-livescan.webp" width="560" height="582" loading="lazy" alt="Oso de 805 MultiServices mostrando su huella digital">
+        <div class="service-photo is-photo">
+          <img src="images/registro-vehicular.webp" width="1000" height="665" loading="lazy" alt="Título de propiedad de California con la llave de un carro">
         </div>
-        <div class="service-index">03 / LIVE SCAN</div>
-        <h3><span class="lang-es">Huellas Digitales (Live Scan)</span><span class="lang-en">Live Scan Fingerprinting</span></h3>
+        <div class="service-index">03 / DMV</div>
+        <h3><span class="lang-es">Registro Vehicular (DMV)</span><span class="lang-en">Vehicle Registration (DMV)</span></h3>
         <p>
-          <span class="lang-es">Servicio de Live Scan certificado por Certifix para trámites de empleo, licencias y más.</span>
-          <span class="lang-en">Certifix-certified Live Scan service for employment, licensing and background checks.</span>
+          <span class="lang-es">Registro, renovaciones, transferencias de título y verificación de vehículos como agente EVR/BPA autorizado.</span>
+          <span class="lang-en">Registration, renewals, title transfers and vehicle verification as an authorized EVR/BPA agent.</span>
         </p>
       </div>
 
       <div class="service-card has-photo">
-        <div class="service-photo">
-          <img src="images/oso-dinero.webp" width="537" height="600" loading="lazy" alt="Oso de 805 MultiServices con dinero en la mano">
+        <div class="service-photo is-photo">
+          <img src="images/paqueteria.webp" width="1000" height="563" loading="lazy" alt="Repartidor entregando un paquete junto a una camioneta de envíos" style="object-position: 70% center">
         </div>
-        <div class="service-index">04 / MONEY TRANSFER</div>
-        <h3><span class="lang-es">Envíos de Dinero a México</span><span class="lang-en">Money Transfers to Mexico</span></h3>
-        <p>
-          <span class="lang-es">Envía dinero de forma rápida y segura a tus seres queridos, con tarifas justas.</span>
-          <span class="lang-en">Send money quickly and securely to your loved ones, at fair rates.</span>
-        </p>
-      </div>
-
-      <div class="service-card has-photo">
-        <div class="service-photo">
-          <img src="images/oso-paqueteria.webp" width="666" height="600" loading="lazy" alt="Oso de 805 MultiServices cargando un paquete">
-        </div>
-        <div class="service-index">05 / SHIPPING</div>
+        <div class="service-index">04 / SHIPPING</div>
         <h3><span class="lang-es">Paquetería y Envíos</span><span class="lang-en">Package Shipping</span></h3>
         <p>
           <span class="lang-es">Envío nacional e internacional de paquetes, con seguimiento y buen precio.</span>
@@ -1001,14 +991,26 @@
       </div>
 
       <div class="service-card has-photo">
-        <div class="service-photo">
-          <img src="images/oso-taxes.webp" width="597" height="600" loading="lazy" alt="Oso de 805 MultiServices con su carpeta de impuestos">
+        <div class="service-photo is-photo">
+          <img src="images/taxes.webp" width="1000" height="667" loading="lazy" alt="Persona preparando impuestos con calculadora y computadora">
         </div>
-        <div class="service-index">06 / TAXES</div>
+        <div class="service-index">05 / TAXES</div>
         <h3><span class="lang-es">Preparación de Impuestos</span><span class="lang-en">Tax Preparation</span></h3>
         <p>
           <span class="lang-es">Declaración de impuestos personales y de negocio, incluyendo trámites de ITIN (W-7).</span>
           <span class="lang-en">Personal and business tax filing, including ITIN (W-7) applications.</span>
+        </p>
+      </div>
+
+      <div class="service-card has-photo">
+        <div class="service-photo">
+          <img src="images/oso-dinero.webp" width="537" height="600" loading="lazy" alt="Oso de 805 MultiServices con dinero en la mano">
+        </div>
+        <div class="service-index">06 / MONEY TRANSFER</div>
+        <h3><span class="lang-es">Envíos de Dinero a México</span><span class="lang-en">Money Transfers to Mexico</span></h3>
+        <p>
+          <span class="lang-es">Envía dinero de forma rápida y segura a tus seres queridos, con tarifas justas.</span>
+          <span class="lang-en">Send money quickly and securely to your loved ones, at fair rates.</span>
         </p>
       </div>
 

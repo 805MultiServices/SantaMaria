@@ -394,8 +394,9 @@
     margin-bottom: 10px;
   }
 
-  .service-cta { margin-top: 18px; padding: 11px 20px; font-size: 14px; }
-  @media (max-width: 640px) { .service-cta { display: block; text-align: center; padding: 10px 12px; font-size: 13.5px; } }
+  .service-ctas { display: flex; gap: 10px; margin-top: 18px; }
+  .service-cta { flex: 1; padding: 11px 10px; font-size: 14px; text-align: center; white-space: nowrap; }
+  @media (max-width: 640px) { .service-ctas { flex-direction: column; gap: 8px; } .service-cta { display: block; padding: 10px 12px; font-size: 13.5px; } }
   .service-card p {
     font-size: 16.5px;
     line-height: 1.5;
@@ -984,10 +985,16 @@
           <span class="lang-es">Servicio de Live Scan certificado por Certifix para trámites de empleo, licencias y más.</span>
           <span class="lang-en">Certifix-certified Live Scan service for employment, licensing and background checks.</span>
         </p>
-        <a href="#cita" class="btn btn-gold service-cta">
-          <span class="lang-es">Hacer cita para Live Scan</span>
-          <span class="lang-en">Book a Live Scan appointment</span>
-        </a>
+        <div class="service-ctas">
+          <a href="#cita" class="btn btn-gold service-cta">
+            <span class="lang-es">Hacer cita</span>
+            <span class="lang-en">Book now</span>
+          </a>
+          <a href="https://applicantstatus.doj.ca.gov/" target="_blank" rel="noopener" class="btn btn-outline-navy service-cta">
+            <span class="lang-es">Revisar Estatus</span>
+            <span class="lang-en">Check Status</span>
+          </a>
+        </div>
       </div>
 
       <div class="service-card has-photo">

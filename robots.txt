@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /apps-script/
+Disallow: /dashboard/
+
+Sitemap: https://805multiservices.com/sitemap.xml

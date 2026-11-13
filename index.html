@@ -36,7 +36,7 @@
   },
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "17:00" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "10:00", "closes": "17:00" }
   ],
   "availableLanguage": ["Spanish", "English"]
 }
@@ -847,6 +847,17 @@
   .btn:active, .mobile-bar a:active { transform: scale(0.97); }
   .field input, .field select, .field textarea { font-size: 16px; }
 
+
+  /* ---------- Tarjeta de cita (Google Calendar) ---------- */
+  .cita-card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 6px; padding: 34px; }
+  .cita-card h3 { font-family: var(--font-display); color: var(--navy); font-size: 24px; margin-bottom: 8px; }
+  .cita-card-sub { color: var(--ink-soft); font-size: 15px; margin-bottom: 22px; }
+  .cita-main { display: block; text-align: center; font-size: 17px; padding: 17px 24px; }
+  .cita-or { margin: 24px 0 12px; font-size: 14px; color: var(--ink-soft); text-align: center; }
+  .cita-alt { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .btn-outline-navy { border: 1px solid var(--navy); color: var(--navy); background: #fff; justify-content: center; text-align: center; }
+  @media (max-width: 640px) { .cita-card { padding: 24px 20px; } }
+
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
     html { scroll-behavior: auto; }
@@ -870,7 +881,7 @@
       <a href="#cap" class="nav-cap"><span class="lang-es">Retira tu Auto (CAP)</span><span class="lang-en">Retire your Car (CAP)</span></a>
       <a href="#nosotros"><span class="lang-es">Nosotros</span><span class="lang-en">About</span></a>
       <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
-      <a href="#cita" class="nav-cita"><span class="lang-es">Hacer una cita</span><span class="lang-en">Book an appointment</span></a>
+      <a href="https://calendar.app.google/b1kdeUvHWrVFGEjN6" target="_blank" rel="noopener" class="nav-cita"><span class="lang-es">Hacer una cita</span><span class="lang-en">Book an appointment</span></a>
     </nav>
     <div class="nav-right">
     <div class="lang-toggle" role="group" aria-label="Language selector">
@@ -898,7 +909,7 @@
         <span class="lang-en">DMV, auto insurance, Live Scan fingerprinting, money transfers, package shipping and tax prep — from a certified agent in Santa Maria.</span>
       </p>
       <div class="hero-ctas">
-        <a href="#cita" class="btn btn-gold">
+        <a href="https://calendar.app.google/b1kdeUvHWrVFGEjN6" target="_blank" rel="noopener" class="btn btn-gold">
           <span class="lang-es">Hacer una cita</span>
           <span class="lang-en">Book an appointment</span>
         </a>
@@ -908,8 +919,8 @@
         </a>
       </div>
       <p class="hero-hours">
-        <span class="lang-es">Lun–Vie 9 AM–7 PM · Sáb 10 AM–5 PM · 1026 W Main St, Santa Maria</span>
-        <span class="lang-en">Mon–Fri 9 AM–7 PM · Sat 10 AM–5 PM · 1026 W Main St, Santa Maria</span>
+        <span class="lang-es">Lun–Vie 9 AM–7 PM · Sáb y Dom 10 AM–5 PM · 1026 W Main St, Santa Maria</span>
+        <span class="lang-en">Mon–Fri 9 AM–7 PM · Sat–Sun 10 AM–5 PM · 1026 W Main St, Santa Maria</span>
       </p>
     </div>
 
@@ -1067,8 +1078,8 @@
       <h2 id="visit-title"><span class="lang-es">Nuestra oficina en Santa Maria</span><span class="lang-en">Our office in Santa Maria</span></h2>
       <p class="visit-addr">1026 W Main St, Suite A<br>Santa Maria, CA</p>
       <p class="visit-hours">
-        <span class="lang-es">Lunes a viernes 9:00 AM – 7:00 PM · Sábado 10:00 AM – 5:00 PM</span>
-        <span class="lang-en">Monday–Friday 9:00 AM – 7:00 PM · Saturday 10:00 AM – 5:00 PM</span>
+        <span class="lang-es">Lunes a viernes 9:00 AM – 7:00 PM · Sábado y domingo 10:00 AM – 5:00 PM</span>
+        <span class="lang-en">Monday–Friday 9:00 AM – 7:00 PM · Saturday–Sunday 10:00 AM – 5:00 PM</span>
       </p>
       <p class="visit-note"><span class="lang-es">Fácil de encontrar sobre W Main St — busca el oso gigante.</span><span class="lang-en">Easy to find on W Main St — look for the giant bear.</span></p>
       <div class="hero-ctas">
@@ -1148,74 +1159,28 @@
       <div class="section-eyebrow"><span class="lang-es">Ahorra tiempo</span><span class="lang-en">Save time</span></div>
       <h2><span class="lang-es">Haz una cita</span><span class="lang-en">Book an appointment</span></h2>
       <p>
-        <span class="lang-es">Escoge el servicio, el día y la hora que prefieres. Te llamamos o te escribimos para confirmar tu cita.</span>
-        <span class="lang-en">Pick the service, day and time you prefer. We'll call or message you to confirm your appointment.</span>
+        <span class="lang-es">Escoge el día y la hora que te queden mejor y la cita queda apartada al instante. Si tienes dudas, llámanos o escríbenos por WhatsApp.</span>
+        <span class="lang-en">Pick the day and time that work for you and your spot is held instantly. Questions? Call us or message us on WhatsApp.</span>
       </p>
       <ul>
         <li><span class="lang-es">Live Scan, DMV, seguros, impuestos y más</span><span class="lang-en">Live Scan, DMV, insurance, taxes and more</span></li>
-        <li><span class="lang-es">Lunes a viernes 9:00 AM – 7:00 PM · Sábado 10:00 AM – 5:00 PM</span><span class="lang-en">Mon–Fri 9:00 AM – 7:00 PM · Sat 10:00 AM – 5:00 PM</span></li>
+        <li><span class="lang-es">Lunes a viernes 9:00 AM – 7:00 PM · Sábado y domingo 10:00 AM – 5:00 PM</span><span class="lang-en">Mon–Fri 9:00 AM – 7:00 PM · Sat–Sun 10:00 AM – 5:00 PM</span></li>
         <li><span class="lang-es">Para Live Scan trae tu identificación y la forma de tu empleador o agencia</span><span class="lang-en">For Live Scan, bring your ID and the form from your employer or agency</span></li>
       </ul>
     </div>
 
-    <form class="cita-form" id="cita-form" novalidate>
-      <div class="field full">
-        <label for="c-servicio"><span class="lang-es">Servicio</span><span class="lang-en">Service</span> <span class="req">*</span></label>
-        <select id="c-servicio" name="servicio" required>
-          <option value="">— Selecciona / Select —</option>
-          <option>Live Scan (huellas / fingerprints)</option>
-          <option>DMV (registro / registration)</option>
-          <option>Verificación de vehículo / Vehicle verification</option>
-          <option>Seguro de auto / Auto insurance</option>
-          <option>Impuestos / Taxes</option>
-          <option>Vende tu Auto (CAP) / Sell your car</option>
-          <option>Otro / Other</option>
-        </select>
-        <div class="err"><span class="lang-es">Selecciona un servicio.</span><span class="lang-en">Select a service.</span></div>
+    <div class="cita-card">
+      <h3><span class="lang-es">Escoge tu día y hora</span><span class="lang-en">Pick your day and time</span></h3>
+      <p class="cita-card-sub"><span class="lang-es">Ves los horarios libres y reservas en un minuto. Te llega la confirmación a tu correo.</span><span class="lang-en">See open times and book in a minute. You'll get a confirmation by email.</span></p>
+      <a href="https://calendar.app.google/b1kdeUvHWrVFGEjN6" target="_blank" rel="noopener" class="btn btn-gold cita-main">
+        <span class="lang-es">Ver horarios disponibles →</span><span class="lang-en">See available times →</span>
+      </a>
+      <div class="cita-or"><span class="lang-es">¿Prefieres hablar con alguien?</span><span class="lang-en">Prefer to talk to someone?</span></div>
+      <div class="cita-alt">
+        <a href="tel:+18056089192" class="btn btn-outline-navy btn-call"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="lang-es">Llamar</span><span class="lang-en">Call</span></a>
+        <a href="https://wa.me/18056089192?text=Hola%2C%20quiero%20hacer%20una%20cita%20en%20805%20MultiServices" target="_blank" rel="noopener" class="btn btn-outline-navy"><span>WhatsApp</span></a>
       </div>
-      <div class="field full">
-        <label for="c-nombre"><span class="lang-es">Nombre completo</span><span class="lang-en">Full name</span> <span class="req">*</span></label>
-        <input id="c-nombre" name="nombre" type="text" autocomplete="name" maxlength="80" required>
-        <div class="err"><span class="lang-es">Escribe tu nombre.</span><span class="lang-en">Enter your name.</span></div>
-      </div>
-      <div class="field">
-        <label for="c-telefono"><span class="lang-es">Teléfono</span><span class="lang-en">Phone</span> <span class="req">*</span></label>
-        <input id="c-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="(805) 555-1234" maxlength="20" required>
-        <div class="err"><span class="lang-es">Escribe un teléfono de 10 dígitos.</span><span class="lang-en">Enter a 10-digit phone number.</span></div>
-      </div>
-      <div class="field">
-        <label for="c-correo"><span class="lang-es">Correo (opcional)</span><span class="lang-en">Email (optional)</span></label>
-        <input id="c-correo" name="correo" type="email" autocomplete="email" maxlength="100">
-        <div class="err"><span class="lang-es">Revisa tu correo.</span><span class="lang-en">Check your email.</span></div>
-      </div>
-      <div class="field">
-        <label for="c-fecha"><span class="lang-es">Día</span><span class="lang-en">Date</span> <span class="req">*</span></label>
-        <input id="c-fecha" name="fecha" type="date" required>
-        <div class="err" id="c-fecha-err"><span class="lang-es">Escoge un día de lunes a sábado.</span><span class="lang-en">Pick a day Monday to Saturday.</span></div>
-      </div>
-      <div class="field">
-        <label for="c-hora"><span class="lang-es">Hora</span><span class="lang-en">Time</span> <span class="req">*</span></label>
-        <select id="c-hora" name="hora" required>
-          <option value="">— Primero escoge el día / Pick a date first —</option>
-        </select>
-        <div class="err"><span class="lang-es">Escoge una hora.</span><span class="lang-en">Pick a time.</span></div>
-      </div>
-      <div class="field full">
-        <label for="c-notas"><span class="lang-es">Comentarios (opcional)</span><span class="lang-en">Comments (optional)</span></label>
-        <textarea id="c-notas" name="notas" maxlength="500" placeholder="Ej.: Live Scan para empleo en escuela / School job Live Scan"></textarea>
-      </div>
-      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-      <div class="full">
-        <button type="submit" class="btn btn-gold" id="c-enviar">
-          <span class="lang-es">Pedir mi cita</span><span class="lang-en">Request my appointment</span>
-        </button>
-      </div>
-      <div class="cita-status full" id="cita-status" role="status" aria-live="polite"></div>
-      <p class="cita-note full">
-        <span class="lang-es">No escribas números de Seguro Social, licencia ni cuentas bancarias. Usamos tus datos solo para confirmar tu cita. La cita queda confirmada cuando te contactamos.</span>
-        <span class="lang-en">Do not enter Social Security, license or bank account numbers. We only use your information to confirm your appointment. Your appointment is confirmed once we contact you.</span>
-      </p>
-    </form>
+    </div>
   </div>
 </section>
 
@@ -1225,8 +1190,8 @@
       <div class="section-eyebrow"><span class="lang-es">Visítanos</span><span class="lang-en">Visit us</span></div>
       <h2><span class="lang-es">Contacto y horario</span><span class="lang-en">Contact & hours</span></h2>
       <p>
-        <span class="lang-es">Estamos en Santa Maria, listos para atenderte de lunes a sábado.</span>
-        <span class="lang-en">We're in Santa Maria, ready to help Monday through Saturday.</span>
+        <span class="lang-es">Estamos en Santa Maria, listos para atenderte los 7 días de la semana.</span>
+        <span class="lang-en">We're in Santa Maria, ready to help 7 days a week.</span>
       </p>
     </div>
 
@@ -1255,7 +1220,7 @@
         <h3><span class="lang-es">Horario de atención</span><span class="lang-en">Business hours</span></h3>
         <div class="hours-row"><span class="day"><span class="lang-es">Lunes – Viernes</span><span class="lang-en">Monday – Friday</span></span><span>9:00 AM – 7:00 PM</span></div>
         <div class="hours-row"><span class="day"><span class="lang-es">Sábado</span><span class="lang-en">Saturday</span></span><span>10:00 AM – 5:00 PM</span></div>
-        <div class="hours-row"><span class="day"><span class="lang-es">Domingo</span><span class="lang-en">Sunday</span></span><span><span class="lang-es">Cerrado</span><span class="lang-en">Closed</span></span></div>
+        <div class="hours-row"><span class="day"><span class="lang-es">Domingo</span><span class="lang-en">Sunday</span></span><span>10:00 AM – 5:00 PM</span></div>
         <div class="note-box">
           <span class="lang-es">Si tienes alguna pregunta sobre cualquier trámite, o vas a manejar larga distancia por algún servicio, ¡llámanos!</span>
           <span class="lang-en">If you have any questions or concerns about any procedure, or if you are going to be driving a long distance for a service, give us a call!</span>
@@ -1291,7 +1256,7 @@
     </div>
     <div class="footer-col">
       <div class="footer-title"><span class="lang-es">Horario</span><span class="lang-en">Hours</span></div>
-      <p><span class="lang-es">Lun–Vie</span><span class="lang-en">Mon–Fri</span> 9:00 AM – 7:00 PM<br><span class="lang-es">Sábado</span><span class="lang-en">Saturday</span> 10:00 AM – 5:00 PM<br><span class="lang-es">Domingo cerrado</span><span class="lang-en">Sunday closed</span></p>
+      <p><span class="lang-es">Lun–Vie</span><span class="lang-en">Mon–Fri</span> 9:00 AM – 7:00 PM<br><span class="lang-es">Sáb y Dom</span><span class="lang-en">Sat–Sun</span> 10:00 AM – 5:00 PM</p>
     </div>
     <nav class="footer-col footer-links" aria-label="Footer">
       <a href="#servicios"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></a>
@@ -1308,7 +1273,7 @@
 
 <div class="mobile-bar" role="navigation" aria-label="Acciones rápidas">
   <a href="tel:+18056089192" class="mb-call"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="lang-es">Llamar</span><span class="lang-en">Call</span></a>
-  <a href="#cita" class="mb-cita"><span class="lang-es">Hacer una cita</span><span class="lang-en">Book appointment</span></a>
+  <a href="https://calendar.app.google/b1kdeUvHWrVFGEjN6" target="_blank" rel="noopener" class="mb-cita"><span class="lang-es">Hacer una cita</span><span class="lang-en">Book appointment</span></a>
 </div>
 
 <script>
@@ -1342,108 +1307,6 @@
     });
   })();
 
-  // ---------- Citas ----------
-  // Pega aquí la URL de tu Apps Script (termina en /exec). Si está vacía,
-  // el formulario abre un correo ya escrito para 805MultiDMV@gmail.com.
-  var CITAS_URL = '';
-  var CITAS_EMAIL = '805MultiDMV@gmail.com';
-
-  (function() {
-    var form = document.getElementById('cita-form');
-    var fecha = document.getElementById('c-fecha');
-    var hora = document.getElementById('c-hora');
-    var status = document.getElementById('cita-status');
-    var enviar = document.getElementById('c-enviar');
-
-    function ymd(d) {
-      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-    }
-    fecha.min = ymd(new Date());
-    var max = new Date(); max.setDate(max.getDate() + 60); fecha.max = ymd(max);
-
-    function lang() { return document.documentElement.getAttribute('data-lang') || 'es'; }
-    function dayOf(value) { var p = value.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]).getDay(); }
-
-    // Horario: L-V 9:00-19:00, Sáb 10:00-17:00. Último turno 30 min antes de cerrar.
-    function fillHours() {
-      hora.innerHTML = '';
-      var first = document.createElement('option'); first.value = '';
-      if (!fecha.value) { first.textContent = '— Primero escoge el día / Pick a date first —'; hora.appendChild(first); return; }
-      var d = dayOf(fecha.value);
-      if (d === 0) { first.textContent = 'Domingo cerrado / Closed Sunday'; hora.appendChild(first); return; }
-      first.textContent = '— Selecciona / Select —'; hora.appendChild(first);
-      var start = d === 6 ? 10 * 60 : 9 * 60, end = d === 6 ? 17 * 60 : 19 * 60;
-      var now = new Date(), today = fecha.value === ymd(now);
-      for (var m = start; m <= end - 30; m += 30) {
-        if (today && m <= now.getHours() * 60 + now.getMinutes() + 30) continue;
-        var h = Math.floor(m / 60), mm = m % 60, h12 = ((h + 11) % 12) + 1;
-        var o = document.createElement('option');
-        o.textContent = o.value = h12 + ':' + String(mm).padStart(2, '0') + (h < 12 ? ' AM' : ' PM');
-        hora.appendChild(o);
-      }
-      if (hora.options.length === 1) first.textContent = 'Sin horarios hoy / No times left today';
-    }
-    fecha.addEventListener('change', fillHours);
-
-    function setInvalid(el, bad) { el.closest('.field').classList.toggle('invalid', bad); return bad; }
-
-    function validate() {
-      var bad = false, f = form.elements;
-      bad = setInvalid(f.servicio, !f.servicio.value) || bad;
-      bad = setInvalid(f.nombre, f.nombre.value.trim().length < 3) || bad;
-      var digits = f.telefono.value.replace(/\D/g, '');
-      if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
-      bad = setInvalid(f.telefono, digits.length !== 10) || bad;
-      var em = f.correo.value.trim();
-      bad = setInvalid(f.correo, em !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) || bad;
-      bad = setInvalid(f.fecha, !f.fecha.value || f.fecha.value < f.fecha.min || dayOf(f.fecha.value) === 0) || bad;
-      bad = setInvalid(f.hora, !f.hora.value) || bad;
-      return !bad;
-    }
-
-    function show(ok, es, en) {
-      status.className = 'cita-status full ' + (ok ? 'ok' : 'bad');
-      status.textContent = lang() === 'en' ? en : es;
-    }
-
-    form.addEventListener('submit', function(ev) {
-      ev.preventDefault();
-      status.className = 'cita-status full';
-      if (!validate()) {
-        show(false, 'Revisa los campos marcados en rojo.', 'Please check the fields marked in red.');
-        var firstBad = form.querySelector('.field.invalid input, .field.invalid select');
-        if (firstBad) firstBad.focus();
-        return;
-      }
-      if (form.elements.website.value) return; // bot
-
-      var data = new URLSearchParams();
-      ['servicio', 'nombre', 'telefono', 'correo', 'fecha', 'hora', 'notas'].forEach(function(k) {
-        data.append(k, form.elements[k].value.trim());
-      });
-      data.append('idioma', lang());
-
-      if (!CITAS_URL) {
-        var body = 'Servicio: ' + data.get('servicio') + '\nNombre: ' + data.get('nombre') +
-          '\nTeléfono: ' + data.get('telefono') + '\nCorreo: ' + data.get('correo') +
-          '\nDía: ' + data.get('fecha') + '\nHora: ' + data.get('hora') + '\nComentarios: ' + data.get('notas');
-        window.location.href = 'mailto:' + CITAS_EMAIL + '?subject=' + encodeURIComponent('Cita: ' + data.get('servicio') + ' – ' + data.get('fecha')) + '&body=' + encodeURIComponent(body);
-        show(true, 'Se abrió tu correo con la cita lista. Solo presiona Enviar. Si no se abrió, llámanos al (805) 608-9192.', 'Your email app opened with the request ready. Just press Send. If it did not open, call (805) 608-9192.');
-        return;
-      }
-
-      enviar.disabled = true;
-      fetch(CITAS_URL, { method: 'POST', mode: 'no-cors', body: data })
-        .then(function() {
-          form.reset(); fillHours();
-          show(true, '¡Listo! Enviamos tu solicitud. Te llamaremos para confirmar tu cita; si no sabes de nosotros en 1 día hábil, llámanos al (805) 608-9192.', 'Done! Your request was sent. We will call you to confirm; if you don\'t hear from us within 1 business day, call (805) 608-9192.');
-        })
-        .catch(function() {
-          show(false, 'No se pudo enviar. Llámanos al (805) 608-9192.', 'Could not send. Please call us at (805) 608-9192.');
-        })
-        .finally(function() { enviar.disabled = false; });
-    });
-  })();
 </script>
 
 </body>

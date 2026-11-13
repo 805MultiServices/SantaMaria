@@ -566,6 +566,10 @@
   }
 
   .service-ctas { display: flex; gap: 10px; margin-top: 18px; }
+  /* Toda la tarjeta lleva a su página; los botones siguen funcionando por encima */
+  .card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 10px; }
+  .service-card:has(.card-link) { cursor: pointer; }
+  .service-card:has(.card-link) .service-ctas { position: relative; z-index: 2; }
   .service-cta { flex: 1; padding: 11px 10px; font-size: 14px; text-align: center; white-space: nowrap; }
   @media (max-width: 640px) { .service-ctas { flex-direction: column; gap: 8px; } .service-cta { display: block; padding: 10px 12px; font-size: 13.5px; } }
   .service-card p {
@@ -1171,7 +1175,7 @@
             <span class="lang-en">Check Status</span>
           </a>
         </div>
-        <a href="live-scan/" class="map-link"><span class="lang-es">Precio, qué traer y horario →</span><span class="lang-en">Price, what to bring and hours →</span></a>
+        <a href="live-scan/" class="map-link card-link"><span class="lang-es">Precio, qué traer y horario →</span><span class="lang-en">Price, what to bring and hours →</span></a>
       </div>
 
       <div class="service-card has-photo">

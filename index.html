@@ -2,9 +2,45 @@
 <html lang="es" data-lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>805 MultiServices — Santa Maria, CA</title>
 <meta name="description" content="805 MultiServices: DMV, Seguros de Auto, Live Scan, Envíos de Dinero, Paquetería y Preparación de Impuestos en Santa Maria, CA.">
+<link rel="canonical" href="https://805multiservices.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="805 MultiServices">
+<meta property="og:title" content="805 MultiServices — DMV, Seguros, Live Scan e Impuestos en Santa Maria, CA">
+<meta property="og:description" content="Registro vehicular, seguros de auto, huellas digitales, envíos de dinero, paquetería e impuestos. 1026 W Main St, Santa Maria. Llámanos: (805) 608-9192.">
+<meta property="og:url" content="https://805multiservices.com/">
+<meta property="og:image" content="https://805multiservices.com/images/edificio.jpg">
+<meta property="og:image:width" content="870">
+<meta property="og:image:height" content="607">
+<meta property="og:locale" content="es_US">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B2545">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "805 MultiServices",
+  "url": "https://805multiservices.com/",
+  "image": "https://805multiservices.com/images/edificio.jpg",
+  "logo": "https://805multiservices.com/images/logo-805.webp",
+  "telephone": "+1-805-608-9192",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1026 W Main St, Suite A",
+    "addressLocality": "Santa Maria",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "17:00" }
+  ],
+  "availableLanguage": ["Spanish", "English"]
+}
+</script>
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -28,6 +64,7 @@
     --sky: #E8F1F8;
     --gold: #B8863E;
     --gold-light: #D9AE64;
+    --gold-text: #8A6220; /* dorado para texto sobre fondo claro (contraste ≥ 4.5:1) */
     --cream: #FBFAF7;
     --ink: #1A222C;
     --ink-soft: #4A5568;
@@ -238,7 +275,7 @@
     transition: transform .12s ease, box-shadow .12s ease;
   }
 
-  .btn:hover { transform: translateY(-1px); }
+  @media (hover: hover) and (pointer: fine) { .btn:hover { transform: translateY(-1px); } }
 
   .btn-gold {
     background: var(--gold);
@@ -305,7 +342,7 @@
     font-size: 12.5px;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 1.4px;
     margin-bottom: 14px;
   }
@@ -338,53 +375,7 @@
     color: var(--ink-soft);
   }
 
-  .interior-photo {
-    margin-top: 40px;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid var(--line);
-  }
 
-  .interior-photo img {
-    width: 100%;
-    max-height: 460px;
-    object-fit: cover;
-    object-position: center 55%;
-  }
-
-  .interior-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(0deg, rgba(11,37,69,0.85), transparent);
-    color: #fff;
-    padding: 30px 26px 16px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  /* Banner "Visítanos": se muestra la imagen completa y el resto se rellena
-     con el mismo azul de la imagen */
-  .visit-banner {
-    line-height: 0;
-    background: linear-gradient(180deg, #022E5D 0%, #023163 100%);
-  }
-
-  .visit-banner a { display: block; }
-
-  .visit-banner img {
-    width: auto;
-    height: 460px;
-    max-width: 100%;
-    object-fit: contain;
-    margin: 0 auto;
-    display: block;
-    /* bordes suaves para que la imagen se funda con el fondo azul */
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
-            mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
-  }
 
   /* ---------- About / trust strip ---------- */
   .about {
@@ -415,7 +406,7 @@
   .credential-tag {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 1px;
     min-width: 78px;
     padding-top: 2px;
@@ -601,8 +592,6 @@
     .menu-toggle { display: block; }
     .services-grid { grid-template-columns: 1fr; }
     .nav-inner { padding: 14px 20px; }
-    .interior-photo img { max-height: 260px; }
-    .visit-banner img { height: auto; width: 100%; -webkit-mask-image: none; mask-image: none; }
   }
 
   /* ---------- CAP (Consumer Assistance Program) ---------- */
@@ -628,7 +617,7 @@
     line-height: 1.2;
     margin-bottom: 14px;
   }
-  .cap-copy h2 .amount { color: var(--gold); white-space: nowrap; }
+  .cap-copy h2 .amount { color: var(--gold-text); white-space: nowrap; }
   .cap-copy > p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 22px; max-width: 60ch; }
   .cap-amounts {
     display: grid;
@@ -650,7 +639,7 @@
   }
   .cap-amount span { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.35; }
   .cap-amount.top { border-color: var(--gold-light); box-shadow: inset 0 0 0 1px var(--gold-light); }
-  .cap-amount.top strong { color: var(--gold); }
+  .cap-amount.top strong { color: var(--gold-text); }
   .cap-ctas { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
   .cap-ctas .btn { padding: 14px 28px; font-size: 15.5px; }
   .cap-ctas .cap-call { color: var(--navy); font-weight: 600; font-size: 14.5px; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
@@ -794,6 +783,70 @@
     outline-offset: 2px;
   }
 
+
+  /* ---------- Llamar (encabezado y portada) ---------- */
+  .mobile-bar { display: none; }
+  .btn-call { display: inline-flex; align-items: center; gap: 8px; }
+  .btn-call svg, .mobile-bar svg { flex-shrink: 0; }
+  .hero-hours { margin-top: 18px; font-size: 14px; color: #C9D6E3; }
+
+  /* ---------- Visítanos ---------- */
+  .visit { background: var(--navy); color: #fff; padding: 76px 0; }
+  .visit-inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+  .visit h2 { font-family: var(--font-display); font-size: 36px; line-height: 1.15; margin-bottom: 18px; }
+  .visit-addr { font-size: 19px; font-weight: 600; margin-bottom: 10px; }
+  .visit-hours { color: #C9D6E3; font-size: 15.5px; margin-bottom: 6px; }
+  .visit-note { color: #C9D6E3; font-size: 15.5px; margin-bottom: 26px; }
+  .visit-photo img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+
+  /* ---------- Footer (columnas) ---------- */
+  .footer-inner { align-items: flex-start; gap: 28px 48px; }
+  .footer-col p { margin-top: 8px; line-height: 1.6; color: #B5C6D8; }
+  .footer-col a { color: #E3ECF5; text-decoration: none; }
+  .footer-title { color: #fff; font-weight: 700; font-size: 14px; }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; }
+  .footer-copy { flex-basis: 100%; border-top: 1px solid rgba(255,255,255,.1); padding-top: 18px; color: #8FA6BE; }
+
+  @media (max-width: 900px) {
+    .visit-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 640px) {
+    .mobile-bar {
+      display: flex; gap: 10px;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+      background: var(--navy-deep);
+      border-top: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 -6px 18px rgba(0,0,0,.25);
+    }
+    .mobile-bar a {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 48px; border-radius: 5px; font-weight: 700; font-size: 15.5px; text-decoration: none;
+    }
+    .mb-call { background: var(--gold); color: var(--navy-deep); }
+    .mb-cita { border: 1px solid rgba(255,255,255,.45); color: #fff; }
+    body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+    .cap-bear img { max-width: 170px; }
+    .visit { padding: 56px 0; }
+    .visit h2 { font-size: 28px; }
+    /* Servicios: 2 columnas con el oso más chico */
+    .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .service-card { padding: 0 14px 16px; }
+    .service-photo { height: 130px; margin: 0 -14px 12px; padding-top: 8px; }
+    .service-card h3 { font-size: 16.5px; line-height: 1.25; margin-bottom: 6px; }
+    .service-card p { font-size: 13.5px; line-height: 1.45; }
+    .service-index { font-size: 10.5px; letter-spacing: 1px; margin-bottom: 8px; }
+  }
+  @media (max-width: 360px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Toques de celular ---------- */
+  html { -webkit-tap-highlight-color: transparent; }
+  a, button { touch-action: manipulation; }
+  .btn:active, .mobile-bar a:active { transform: scale(0.97); }
+  .field input, .field select, .field textarea { font-size: 16px; }
+
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
     html { scroll-behavior: auto; }
@@ -814,7 +867,7 @@
     </a>
     <nav class="links" id="main-nav">
       <a href="#servicios"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></a>
-      <a href="#cap" class="nav-cap"><span class="lang-es">Vende tu Auto</span><span class="lang-en">Sell your Car</span></a>
+      <a href="#cap" class="nav-cap"><span class="lang-es">Retira tu Auto (CAP)</span><span class="lang-en">Retire your Car (CAP)</span></a>
       <a href="#nosotros"><span class="lang-es">Nosotros</span><span class="lang-en">About</span></a>
       <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
       <a href="#cita" class="nav-cita"><span class="lang-es">Hacer una cita</span><span class="lang-en">Book an appointment</span></a>
@@ -833,8 +886,8 @@
   <div class="container hero-inner">
     <div>
       <div class="eyebrow">
-        <span class="lang-es">Licenciado por el estado de California</span>
-        <span class="lang-en">Licensed in the State of California</span>
+        <span class="lang-es">Agente EVR/BPA autorizado · Verificador VV-20941</span>
+        <span class="lang-en">Authorized EVR/BPA agent · Verifier VV-20941</span>
       </div>
       <h1>
         <span class="lang-es">Tus trámites, resueltos en un solo lugar.</span>
@@ -849,11 +902,15 @@
           <span class="lang-es">Hacer una cita</span>
           <span class="lang-en">Book an appointment</span>
         </a>
-        <a href="#servicios" class="btn btn-ghost">
-          <span class="lang-es">Ver servicios</span>
-          <span class="lang-en">View services</span>
+        <a href="tel:+18056089192" class="btn btn-ghost btn-call">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>(805) 608-9192</span>
         </a>
       </div>
+      <p class="hero-hours">
+        <span class="lang-es">Lun–Vie 9 AM–7 PM · Sáb 10 AM–5 PM · 1026 W Main St, Santa Maria</span>
+        <span class="lang-en">Mon–Fri 9 AM–7 PM · Sat 10 AM–5 PM · 1026 W Main St, Santa Maria</span>
+      </p>
     </div>
 
   </div>
@@ -945,14 +1002,6 @@
       </div>
 
     </div>
-
-    <div class="interior-photo">
-      <img src="images/edificio.jpg" alt="Fachada de 805 MultiServices en Santa Maria">
-      <div class="interior-caption">
-        <span class="lang-es">Nuestra oficina en Santa Maria — fácil de encontrar sobre W Main St.</span>
-        <span class="lang-en">Our Santa Maria office — easy to find on W Main St.</span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1011,11 +1060,29 @@
   </div>
 </section>
 
-<div class="visit-banner">
-  <a href="#contacto">
-    <img src="images/visitanos-banner.jpg" alt="Oficina en Santa Maria, visítanos">
-  </a>
-</div>
+<section class="visit" aria-labelledby="visit-title">
+  <div class="container visit-inner">
+    <div class="visit-copy">
+      <div class="eyebrow"><span class="lang-es">Visítanos</span><span class="lang-en">Visit us</span></div>
+      <h2 id="visit-title"><span class="lang-es">Nuestra oficina en Santa Maria</span><span class="lang-en">Our office in Santa Maria</span></h2>
+      <p class="visit-addr">1026 W Main St, Suite A<br>Santa Maria, CA</p>
+      <p class="visit-hours">
+        <span class="lang-es">Lunes a viernes 9:00 AM – 7:00 PM · Sábado 10:00 AM – 5:00 PM</span>
+        <span class="lang-en">Monday–Friday 9:00 AM – 7:00 PM · Saturday 10:00 AM – 5:00 PM</span>
+      </p>
+      <p class="visit-note"><span class="lang-es">Fácil de encontrar sobre W Main St — busca el oso gigante.</span><span class="lang-en">Easy to find on W Main St — look for the giant bear.</span></p>
+      <div class="hero-ctas">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=1026+W+Main+St+Suite+A,+Santa+Maria,+CA" target="_blank" rel="noopener" class="btn btn-gold">
+          <span class="lang-es">Cómo llegar</span><span class="lang-en">Get directions</span>
+        </a>
+        <a href="tel:+18056089192" class="btn btn-ghost btn-call"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="lang-es">Llamar</span><span class="lang-en">Call</span></a>
+      </div>
+    </div>
+    <div class="visit-photo">
+      <img src="images/edificio.jpg" width="870" height="607" loading="lazy" alt="Fachada de 805 MultiServices en 1026 W Main St, Santa Maria, con el oso inflable">
+    </div>
+  </div>
+</section>
 
 <section class="section about" id="nosotros">
   <div class="container about-inner">
@@ -1217,17 +1284,37 @@
 
 <footer>
   <div class="container footer-inner">
-    <div class="brand-text">805 MultiServices</div>
-    <div>
+    <div class="footer-col">
+      <div class="brand-text">805 MultiServices</div>
+      <p>1026 W Main St, Suite A<br>Santa Maria, CA</p>
+      <p><a href="tel:+18056089192">(805) 608-9192</a></p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title"><span class="lang-es">Horario</span><span class="lang-en">Hours</span></div>
+      <p><span class="lang-es">Lun–Vie</span><span class="lang-en">Mon–Fri</span> 9:00 AM – 7:00 PM<br><span class="lang-es">Sábado</span><span class="lang-en">Saturday</span> 10:00 AM – 5:00 PM<br><span class="lang-es">Domingo cerrado</span><span class="lang-en">Sunday closed</span></p>
+    </div>
+    <nav class="footer-col footer-links" aria-label="Footer">
+      <a href="#servicios"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></a>
+      <a href="#cap"><span class="lang-es">Programa CAP</span><span class="lang-en">CAP program</span></a>
+      <a href="#cita"><span class="lang-es">Hacer una cita</span><span class="lang-en">Book an appointment</span></a>
+      <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
+    </nav>
+    <div class="footer-copy">
       <span class="lang-es">© 2026 805 MultiServices. Todos los derechos reservados.</span>
       <span class="lang-en">© 2026 805 MultiServices. All rights reserved.</span>
     </div>
   </div>
 </footer>
 
+<div class="mobile-bar" role="navigation" aria-label="Acciones rápidas">
+  <a href="tel:+18056089192" class="mb-call"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="lang-es">Llamar</span><span class="lang-en">Call</span></a>
+  <a href="#cita" class="mb-cita"><span class="lang-es">Hacer una cita</span><span class="lang-en">Book appointment</span></a>
+</div>
+
 <script>
   function setLang(lang) {
     document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
     document.getElementById('btn-es').classList.toggle('active', lang === 'es');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     try { localStorage.setItem('805ms-lang', lang); } catch(e) {}
@@ -1341,7 +1428,7 @@
           '\nTeléfono: ' + data.get('telefono') + '\nCorreo: ' + data.get('correo') +
           '\nDía: ' + data.get('fecha') + '\nHora: ' + data.get('hora') + '\nComentarios: ' + data.get('notas');
         window.location.href = 'mailto:' + CITAS_EMAIL + '?subject=' + encodeURIComponent('Cita: ' + data.get('servicio') + ' – ' + data.get('fecha')) + '&body=' + encodeURIComponent(body);
-        show(true, 'Se abrió tu correo con la cita lista. Solo presiona Enviar.', 'Your email app opened with the request ready. Just press Send.');
+        show(true, 'Se abrió tu correo con la cita lista. Solo presiona Enviar. Si no se abrió, llámanos al (805) 608-9192.', 'Your email app opened with the request ready. Just press Send. If it did not open, call (805) 608-9192.');
         return;
       }
 
@@ -1349,7 +1436,7 @@
       fetch(CITAS_URL, { method: 'POST', mode: 'no-cors', body: data })
         .then(function() {
           form.reset(); fillHours();
-          show(true, '¡Listo! Recibimos tu solicitud. Te contactaremos pronto para confirmar tu cita.', 'Done! We received your request. We will contact you soon to confirm your appointment.');
+          show(true, '¡Listo! Enviamos tu solicitud. Te llamaremos para confirmar tu cita; si no sabes de nosotros en 1 día hábil, llámanos al (805) 608-9192.', 'Done! Your request was sent. We will call you to confirm; if you don\'t hear from us within 1 business day, call (805) 608-9192.');
         })
         .catch(function() {
           show(false, 'No se pudo enviar. Llámanos al (805) 608-9192.', 'Could not send. Please call us at (805) 608-9192.');

@@ -32,3 +32,5 @@ Citas en línea: https://805multiservices.com/#cita
 - Servicios: https://805multiservices.com/#servicios
 - Programa CAP: https://805multiservices.com/#cap
 - Preguntas frecuentes: https://805multiservices.com/#preguntas
+- Política de privacidad: https://805multiservices.com/privacidad/
+- Términos de mensajes de texto (SMS): https://805multiservices.com/terminos-sms/

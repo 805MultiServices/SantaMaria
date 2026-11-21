@@ -959,7 +959,7 @@
     </ul>
 
     <h2><span class="lang-es">Mensajes de texto (SMS) y su número de celular</span><span class="lang-en">Text messages (SMS) and your mobile number</span></h2>
-    <p class="key"><span class="lang-es">No vendemos, rentamos ni compartimos su número de celular ni su consentimiento para recibir mensajes de texto con terceros ni con empresas afiliadas para fines de mercadotecnia o promoción. Los datos de inscripción y consentimiento para mensajes de texto no se comparten con terceros.</span><span class="lang-en">We do not sell, rent or share your mobile number or your consent to receive text messages with third parties or affiliates for marketing or promotional purposes. Text messaging opt-in data and consent are not shared with any third parties.</span></p>
+    <p class="key"><span class="lang-es">No vendemos, rentamos ni compartimos su número de celular ni su consentimiento para recibir mensajes de texto con terceros ni con empresas afiliadas para fines de mercadotecnia o promoción. Los datos de inscripción y consentimiento para mensajes de texto no se comparten con terceros. No vendemos ni compartimos sus datos de inscripción a SMS ni su información personal con terceros para fines de mercadotecnia.</span><span class="lang-en">We do not sell, rent or share your mobile number or your consent to receive text messages with third parties or affiliates for marketing or promotional purposes. Text messaging opt-in data and consent are not shared with any third parties. We do not sell or share your SMS opt-in data or personal information with third parties for marketing purposes.</span></p>
     <p><span class="lang-es">Usamos un proveedor de servicios de mensajería (Twilio) únicamente para entregar nuestros mensajes. Ese proveedor no puede usar su número para otros fines.</span><span class="lang-en">We use a messaging service provider (Twilio) only to deliver our messages. That provider may not use your number for any other purpose.</span></p>
     <p><span class="lang-es">Puede dejar de recibir mensajes en cualquier momento respondiendo <strong>STOP</strong>.</span><span class="lang-en">You can stop receiving messages at any time by replying <strong>STOP</strong>.</span></p>
 
@@ -1024,7 +1024,8 @@
   (function() {
     var saved = null;
     try { saved = localStorage.getItem('805ms-lang'); } catch(e) {}
-    if (saved === 'en') setLang('en');
+    try { var q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'es') saved = q; } catch(e) {}
+    if (saved === 'en') setLang('en'); else if (saved === 'es') setLang('es');
   })();
   // ---------- Menú en celular ----------
   (function() {

@@ -1561,7 +1561,8 @@
   (function() {
     var saved = null;
     try { saved = localStorage.getItem('805ms-lang'); } catch(e) {}
-    if (saved === 'en') setLang('en');
+    try { var q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'es') saved = q; } catch(e) {}
+    if (saved === 'en') setLang('en'); else if (saved === 'es') setLang('es');
   })();
   // ---------- Menú en celular ----------
   (function() {

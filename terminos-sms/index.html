@@ -929,7 +929,7 @@
 
 <section class="hero legal-hero" id="top">
   <div class="container">
-    <h1><span class="lang-es">Términos de mensajes de texto</span><span class="lang-en">Text Message Terms</span></h1>
+    <h1><span class="lang-es">Términos de mensajes de texto</span><span class="lang-en">Terms &amp; Conditions — SMS Terms</span></h1>
     <p class="lead"><span class="lang-es">Qué mensajes enviamos, con qué frecuencia y cómo cancelar en cualquier momento.</span><span class="lang-en">What messages we send, how often, and how to opt out at any time.</span></p>
   </div>
 </section>
@@ -939,7 +939,7 @@
 
     <p class="updated"><span class="lang-es">Vigente desde el 20 de noviembre de 2026.</span><span class="lang-en">Effective November 20, 2026.</span></p>
 
-    <h2><span class="lang-es">El programa</span><span class="lang-en">The program</span></h2>
+    <h2><span class="lang-es">Términos de SMS: el programa</span><span class="lang-en">SMS Terms: the program</span></h2>
     <p><span class="lang-es"><strong>Avisos de 805 MultiServices</strong> son mensajes de texto que enviamos a clientes que lo aceptaron, sobre los trámites que hicieron con nosotros:</span><span class="lang-en"><strong>805 MultiServices Alerts</strong> are text messages we send to customers who agreed to receive them, about services they completed with us:</span></p>
     <ul>
       <li><span class="lang-es">Recordatorio de renovación del registro de su vehículo (sticker).</span><span class="lang-en">Vehicle registration (sticker) renewal reminders.</span></li>
@@ -954,7 +954,7 @@
     <h2><span class="lang-es">Frecuencia</span><span class="lang-en">Message frequency</span></h2>
     <p><span class="lang-es">La frecuencia varía según sus trámites. El recordatorio del sticker es un mensaje al año por vehículo.</span><span class="lang-en">Message frequency varies with your services. The sticker reminder is one message per year per vehicle.</span></p>
 
-    <h2><span class="lang-es">Costo</span><span class="lang-en">Cost</span></h2>
+    <h2><span class="lang-es">Costo</span><span class="lang-en">Cost — message and data rates may apply</span></h2>
     <p><span class="lang-es">Nosotros no cobramos por los mensajes. <strong>Pueden aplicar tarifas de mensajes y datos</strong> de su compañía telefónica.</span><span class="lang-en">We do not charge for these messages. <strong>Message and data rates may apply</strong> from your mobile carrier.</span></p>
 
     <h2><span class="lang-es">Cómo cancelar</span><span class="lang-en">How to opt out</span></h2>
@@ -1015,7 +1015,8 @@
   (function() {
     var saved = null;
     try { saved = localStorage.getItem('805ms-lang'); } catch(e) {}
-    if (saved === 'en') setLang('en');
+    try { var q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'es') saved = q; } catch(e) {}
+    if (saved === 'en') setLang('en'); else if (saved === 'es') setLang('es');
   })();
   // ---------- Menú en celular ----------
   (function() {
